@@ -23,6 +23,9 @@
 - [Câu 67: Caching Strategy - React cache, fetch cache và Next.js cache](#câu-67-caching-strategy---react-cache-fetch-cache-và-nextjs-cache)
 - [Câu 68: Tư duy thiết kế hệ thống Frontend với React ở scale lớn](#câu-68-tư-duy-thiết-kế-hệ-thống-frontend-với-react-ở-scale-lớn)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 51: React Fiber Architecture
@@ -63,6 +66,9 @@ Nhờ Fiber mà Concurrent Features, Suspense, time-slicing mới khả thi. Sta
 **Trade-off:** Fiber phức tạp, memory overhead hơn, nhưng cho phép cooperative scheduling với Scheduler (ưu tiên, deadline).
 
 **Câu hỏi đào sâu:** Vì sao Fiber dùng linked list thay vì tree? `alternate` double buffer để làm gì? Lanes là gì?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -111,6 +117,9 @@ function App() {
 
 **Câu hỏi đào sâu:** Concurrent khác gì với time-slicing? Vì sao `createRoot` mới bật concurrent còn `ReactDOM.render` thì không?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 53: React 18 - Những tính năng nổi bật
@@ -123,7 +132,7 @@ React 18 là bản nền cho Concurrent:
 3.  **Transitions (`useTransition`, `startTransition`):** đánh dấu update không khẩn (non-urgent), để React ưu tiên urgent update (typing, click).
 4.  **Suspense cho SSR:** `Suspense` hỗ trợ streaming SSR, selective hydration.
 5.  **New hooks:** `useId`, `useDeferredValue`, `useSyncExternalStore`, `useInsertionEffect`.
-6.  **SuspenseList** (experimental, đã loại bỏ khỏi stable 18, chỉ còn trong experimental) - ít dùng, thay bằng streaming + Suspense lồng nhau. Cải thiện `hydrateRoot`.
+6.  **SuspenseList** (vẫn đang experimental, chưa từng ổn định trong React 18) - ít dùng, thay bằng streaming + Suspense lồng nhau. Cải thiện `hydrateRoot`.
 
 ```jsx
 // Automatic Batching - React 18 batch cả async
@@ -153,12 +162,15 @@ Migration: thay `ReactDOM.render` bằng `createRoot`, check `findDOMNode` depre
 
 **Câu hỏi đào sâu:** Automatic batching ảnh hưởng `useEffect` thế nào? `hydrateRoot` khác `createRoot` thế nào?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 54: React 19 - Actions, `use` và React Compiler
 
 **Trả lời Senior:**
-React 19 (stable Dec 2024, Compiler vẫn beta qua eslint-plugin-react-compiler) tập trung vào **data fetching + mutations + compiler**:
+React 19 (stable Dec 2024, Compiler vẫn beta qua `babel-plugin-react-compiler`; `eslint-plugin-react-compiler` chỉ là lint báo vi phạm rule) tập trung vào **data fetching + mutations + compiler**:
 
 - **Actions (`useTransition` + async):** `formAction`, `useActionState` (trước là `useFormState`), `useFormStatus` để xử lý form/mutation với pending, optimistic update, error handling tích hợp. Server Actions (Next.js) là 1 dạng action.
 - **`use` API:** đọc Promise hoặc Context **trong render** (không chỉ top-level), cho phép `if (cond) use(...)` - linh hoạt hơn hooks. Dùng với Suspense (chỉ trong render có Suspense boundary).
@@ -208,6 +220,9 @@ const [optimisticTodos, addOptimistic] = React.useOptimistic(todos, (state, newT
 **Trade-off:** `use` chỉ dùng trong render có Suspense boundary, không phải mọi nơi. Compiler tuyệt vời nhưng cần codemod và test kỹ, chưa bật mặc định cho mọi app.
 
 **Câu hỏi đào sâu:** `use` khác `useEffect` + `await` thế nào? React Compiler thay thế `memo` thủ công ra sao?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -259,6 +274,9 @@ function FilteredList({ query, items }) {
 **Lỗi thường gặp:** Bọc urgent update trong transition (làm input lag), dùng `useDeferredValue` cho mọi state (overhead).
 
 **Câu hỏi đào sâu:** Khi nào chọn `useTransition` thay vì `useDeferredValue`? `isPending` vs `query !== deferredQuery` khác gì?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -315,6 +333,9 @@ Suspense còn lồng nhau, `SuspenseList` để control reveal order, và kết 
 
 **Câu hỏi đào sâu:** Suspense bắt Promise thế nào? Khác gì với `isLoading` thủ công? Làm sao handle error khi suspend?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 57: Error Boundary và xử lý lỗi toàn cục
@@ -363,6 +384,9 @@ Kết hợp với Suspense: Error Boundary bắt lỗi fetch, Suspense bắt loa
 
 **Câu hỏi đào sâu:** Vì sao Error Boundary phải là class? Làm sao bắt lỗi async/event handler?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 58: Server Components (RSC) vs Client Components
@@ -407,6 +431,9 @@ Lợi ích: giảm JS gửi client, fetch waterfall giảm (RSC fetch song song 
 **Trade-off:** RSC làm mental model phức tạp (2 môi trường), debug khó hơn, không phải mọi lib tương thích. Chỉ dùng khi framework hỗ trợ (Next.js).
 
 **Câu hỏi đào sâu:** RSC khác SSR thế nào? Vì sao không dùng `useState` trong RSC? Props từ RSC sang Client phải serializable?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -453,6 +480,9 @@ Selective Hydration còn ưu tiên hydrate phần user đang tương tác (click
 **Lỗi thường gặp:** Dùng `Math.random()` trong render, `useLayoutEffect` warning trên server, không `suppressHydrationWarning` đúng chỗ.
 
 **Câu hỏi đào sâu:** Selective Hydration ưu tiên thế nào? Vì sao `window` trong render gây mismatch?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -502,6 +532,9 @@ Chọn: marketing/blog -> SSG/ISR, dashboard user-specific -> CSR/SSR, e-commerc
 **Trade-off:** SSR tốn server, SSG không real-time, ISR phức tạp cache invalidation, CSR SEO kém.
 
 **Câu hỏi đào sâu:** Khi nào chọn ISR thay vì SSR? `cache: 'no-store'` vs `revalidate` khác gì?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -556,6 +589,9 @@ Selective Hydration: client ưu tiên hydrate phần đã stream, không block b
 **Trade-off:** Streaming phức tạp hơn `renderToString` (phải handle backpressure, error boundary). Nhưng cải thiện TTFB 20-40% với page có data chậm.
 
 **Câu hỏi đào sâu:** `renderToString` vs `renderToPipeableStream` khác gì? Streaming ảnh hưởng SEO không?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -618,6 +654,9 @@ const modules = import.meta.glob('./pages/*.jsx'); // lazy tất cả
 
 **Câu hỏi đào sâu:** `React.lazy` khác `dynamic import` thường thế nào? Prefetch vs preload khác gì?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 63: Performance Debugging - Profiler và DevTools
@@ -661,6 +700,9 @@ Workflow Senior: Record Profiler -> tìm component render nhiều/lâu -> check 
 **Trade-off:** Profiler overhead, chỉ đo dev, production cần `Profiler` với `onRender` gửi analytics. `why-did-you-render` noisy nếu bật hết.
 
 **Câu hỏi đào sâu:** Flame graph vs Ranked chart khác gì? Làm sao phát hiện wasted render?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -714,6 +756,9 @@ function VirtualList({ items }) {
 
 **Câu hỏi đào sâu:** Khi nào `children` giúp tránh re-render? Virtualization hoạt động thế nào?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 65: Concurrent Features - useId và useSyncExternalStore
@@ -764,6 +809,9 @@ Ngoài ra `useInsertionEffect` dành cho CSS-in-JS inject style trước layout.
 **Trade-off:** `useId` chỉ cho id, không cho random. `useSyncExternalStore` bắt buộc `getSnapshot` phải pure và cache.
 
 **Câu hỏi đào sâu:** Tearing là gì và vì sao `useSyncExternalStore` fix được? `useId` khác `Math.random()` thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -830,6 +878,9 @@ Server Actions tự handle CSRF, progressive enhancement (form vẫn chạy khi 
 
 **Câu hỏi đào sâu:** Server Actions khác API Route thế nào? `revalidatePath` vs `revalidateTag` khác gì?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 67: Caching Strategy - React cache, fetch cache và Next.js cache
@@ -878,6 +929,9 @@ export const getItem = cache(async id => {
 
 **Câu hỏi đào sâu:** Request Memoization khác Data Cache thế nào? Khi nào dùng `revalidateTag` vs `revalidatePath`?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 68: Tư duy thiết kế hệ thống Frontend với React ở scale lớn
@@ -920,4 +974,5 @@ Nguyên tắc Senior: **optimize for change** - code dễ thay đổi hơn code 
 
 **Câu hỏi đào sâu:** Khi nào cần micro-frontend? Làm sao phân biệt Server State vs Client State? Feature-sliced khác Clean Architecture thế nào?
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---

@@ -21,6 +21,9 @@
 - [Câu 149: ETag, Conditional Request và Cache API](#câu-149-etag-conditional-request-và-cache-api)
 - [Câu 150: API Contract - versioning, idempotency-key và rate limit](#câu-150-api-contract---versioning-idempotency-key-và-rate-limit)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 135: RESTful là gì? 6 nguyên tắc thiết kế API
@@ -77,6 +80,9 @@ const { data, nextCursor } = await res.json();
 **Trade-off:** REST đơn giản, cache được, nhưng với query phức tạp (nested, graph) thì GraphQL linh hoạt hơn. Dùng REST cho CRUD, GraphQL cho data graph.
 
 **Câu hỏi đào sâu:** Vì sao REST phải stateless? HATEOAS có thực sự cần không? REST khác RPC thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -137,6 +143,9 @@ await fetch('/api/products/123', {
 
 **Câu hỏi đào sâu:** Vì sao PUT idempotent còn PATCH thường không? Khi nào dùng `application/merge-patch+json` vs `json-patch+json`?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 137: Status Code hay dùng - 2xx, 3xx, 4xx, 5xx
@@ -186,6 +195,9 @@ if (res.status === 422) { /* validation */ }
 **Trade-off:** Đừng dùng `200` cho mọi thứ kèm `{ success: false }` - mất semantic, không tận dụng `fetch`/`axios` interceptor. Dùng code chuẩn để CDN, retry, cache hoạt động đúng.
 
 **Câu hỏi đào sâu:** Vì sao `201` nên kèm `Location` header? `429` khác `503` thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -243,6 +255,9 @@ function DeleteButton({ canDelete }: { canDelete: boolean }) {
 
 **Câu hỏi đào sâu:** Vì sao 401 tên là Unauthorized nhưng lại là Unauthenticated? Khi nào backend nên trả 404 thay vì 403 để che giấu resource?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 139: 404 Not Found vs 410 Gone
@@ -297,6 +312,9 @@ async function getProduct(id: string) {
 **Trade-off:** 410 chính xác hơn nhưng cần server nhớ đã từng có gì (thêm logic). Nhiều team lười chỉ trả 404 cho mọi case, mất tín hiệu cho bot/CDN.
 
 **Câu hỏi đào sâu:** Vì sao 410 tốt hơn 404 cho SEO khi xóa sản phẩm? Khi nào nên 301 redirect thay vì 410?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -360,6 +378,9 @@ if (!parsed.success) setFieldErrors(parsed.error.flatten().fieldErrors);
 **Trade-off:** Tách 400/422 rõ ràng nhưng cần team thống nhất. Nhiều framework (Laravel, Rails) mặc định 422 cho validation, Express hay trả 400. Quan trọng là document.
 
 **Câu hỏi đào sâu:** Vì sao 422 ban đầu của WebDAV nhưng lại phổ biến cho REST? Khi nào nên trả 400 kèm `errors` chi tiết thay vì 422?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -425,6 +446,9 @@ await fetch('/api/orders', {
 
 **Câu hỏi đào sâu:** Vì sao POST không nên retry mặc định? `Idempotency-Key` hoạt động thế nào để POST retry an toàn?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 142: Exponential Backoff, Jitter và Retry-After
@@ -477,6 +501,9 @@ async function fetchWithBackoff(url: string, opts: RequestInit = {}, maxRetries 
 **Trade-off:** Backoff làm tổng thời gian tăng, nhưng giảm 90% load khi server recovery. Jitter làm delay không đều, nhưng tránh spike. Luôn set `max` để không đợi 5 phút.
 
 **Câu hỏi đào sâu:** Full jitter vs equal jitter khác gì? Vì sao không dùng fixed delay 1s cho mọi retry?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -540,6 +567,9 @@ useEffect(() => {
 **Trade-off:** `requestId` đơn giản nhưng vẫn tốn network (request cũ vẫn chạy). `Abort` tiết kiệm network nhưng cần handle `AbortError`. TanStack Query là chuẩn cho app lớn.
 
 **Câu hỏi đào sâu:** Vì sao `let ignore = false` trong `useEffect` cleanup lại fix được race? `AbortController` khác `ignore flag` thế nào về network?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -614,6 +644,9 @@ function Autocomplete({ query }: { query: string }) {
 
 **Câu hỏi đào sâu:** Vì sao autocomplete cần `minLength` 2? Làm sao highlight match mà không XSS?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 145: Request Cancellation và AbortController
@@ -675,6 +708,9 @@ useQuery({ queryKey: ['products'], queryFn: ({ signal }) => fetch('/api/products
 
 **Câu hỏi đào sâu:** `AbortController` khác `CancelToken` của Axios cũ thế nào? Vì sao phải `return () => controller.abort()` trong `useEffect`?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 146: Offset Pagination vs Cursor Pagination
@@ -729,6 +765,9 @@ function useCursor() {
 **Trade-off:** Offset đơn giản cho admin, cursor là chuẩn cho feed/timeline. Nhiều API hỗ trợ cả hai.
 
 **Câu hỏi đào sâu:** Vì sao offset chậm khi `OFFSET 100000`? Cursor cần sort thế nào để không miss khi `createdAt` trùng?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -795,6 +834,9 @@ function ProductFeed() {
 
 **Câu hỏi đào sâu:** Vì sao cursor dùng `(createdAt, id)` thay vì chỉ `id`? Làm sao handle khi user scroll nhanh trigger nhiều `fetchNextPage`?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 148: Optimistic Update và Rollback
@@ -852,6 +894,9 @@ async function optimisticUpdate() {
 **Trade-off:** Optimistic mượt nhưng phức tạp: phải snapshot, handle race (2 like nhanh), và rollback. Nếu API chậm 2s mà không optimistic, user bấm 3 lần → duplicate request. Nên **disable button khi pending** + optimistic.
 
 **Câu hỏi đào sâu:** Khi nào không nên optimistic (ví dụ chuyển tiền)? Làm sao handle khi 2 optimistic update cùng resource race nhau?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -924,6 +969,9 @@ app.get('/api/products', async (req, res) => {
 
 **Câu hỏi đào sâu:** `ETag` mạnh (`"abc"`) vs yếu (`W/"abc"`) khác gì? `If-Match` vs `If-None-Match` dùng khi nào?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 150: API Contract - versioning, idempotency-key và rate limit
@@ -993,4 +1041,5 @@ axios.interceptors.response.use(null, async error => {
 
 **Câu hỏi đào sâu:** Vì sao `Idempotency-Key` chỉ cho `POST` mà không cần cho `PUT`? Làm sao versioning không break khi chỉ thêm field optional?
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---

@@ -18,6 +18,9 @@
 - [Trap 12: Why NOT Abstraction?](#trap-12-why-not-abstraction)
 - [Bảng tổng hợp Trap](#bảng-tổng-hợp-trap)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Trap 1: Why React?
@@ -35,6 +38,9 @@
 - **Khi nào KHÔNG dùng:** Landing page tĩnh → Astro/HTML tốt hơn. App siêu nhẹ (<50kb) → Preact/Svelte. Team đã mạnh Vue và không cần RN → Vue cũng tốt, không cần đổi.
 
 **Câu chốt Senior:** "Mình chọn React vì **team đã có kinh nghiệm, cần RN share logic, và hệ sinh thái Next.js cho SEO**. Nếu làm landing tĩnh thì mình sẽ chọn Astro."
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -61,6 +67,9 @@ const data = JSON.parse(await fetch('/api/user').then(r=>r.text())) as User; // 
 const user = UserSchema.parse(data);
 ```
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Trap 3: Why Next.js?
@@ -84,6 +93,9 @@ const user = UserSchema.parse(data);
 | E-commerce, blog, marketing (SEO) | Next.js |
 | Admin, dashboard nội bộ | Vite SPA |
 | Static site ít JS | Astro |
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -114,6 +126,9 @@ Global phức tạp + team lớn → Redux Toolkit
 Atomic → Jotai
 ```
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Trap 5: Why Micro-frontend?
@@ -132,6 +147,9 @@ Atomic → Jotai
 
 **Alternative:** Monorepo + `pnpm workspace` + `Module Federation` cho share, hoặc đơn giản là **feature-based monolith**.
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Trap 6: Why Monorepo?
@@ -149,6 +167,9 @@ Atomic → Jotai
 - **Khi nào KHÔNG dùng:** 2 repo độc lập, ít share, team khác công ty → polyrepo đơn giản hơn. Monorepo cần **tooling** (Turborepo, Nx, pnpm).
 
 **Stack:** `pnpm + Turborepo + changesets` là chuẩn 2024-2026.
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -177,6 +198,9 @@ SEO + realtime → SSR
 No SEO + app → CSR
 ```
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Trap 8: Why Tailwind?
@@ -195,6 +219,9 @@ No SEO + app → CSR
 
 > Update 2025: Tailwind v4 engine mới (Oxide), không cần tailwind.config.js, `@import "tailwindcss"`, Vite plugin `@tailwindcss/vite`. Trade-off cũ vẫn đúng.
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Trap 9: Why NOT Tailwind? (Khi nào không dùng)
@@ -209,6 +236,9 @@ No SEO + app → CSR
 - **Alternative:** `CSS Modules + PostCSS`, `Vanilla Extract`, `Panda CSS` (type-safe), `UnoCSS`.
 
 **Quyết định:** Nếu **design system = component library** (shadcn/ui) thì Tailwind hợp. Nếu **design system = token + CSS variable** thì CSS Modules + variable linh hoạt hơn.
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -226,6 +256,9 @@ No SEO + app → CSR
 - **Khi nào cần:** > 3 team, > 50 trang, cần **brand consistency**, hoặc **multi-product**.
 
 **Bắt đầu nhỏ:** `Button`, `Input`, `Dialog` → `Storybook` → `Figma token` → scale dần.
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -250,6 +283,9 @@ function useFetch<T>(url: string) { /* 50 dòng generic */ }
 // Khi thấy 3 component đều fetch + loading + error giống nhau → mới tách useFetch
 ```
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Trap 12: Why NOT Abstraction?
@@ -272,6 +308,7 @@ function useFetch<T>(url: string) { /* 50 dòng generic */ }
 
 **Dấu hiệu over-abstraction:** Prop `mode: 'a' | 'b' | 'c'` với `if (mode === 'a')` khắp nơi → nên tách 2 component.
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---
 
 ## Bảng tổng hợp Trap

@@ -18,6 +18,9 @@
 - [Câu 133: Frontend có nên chứa secret? API key và env var](#câu-133-frontend-có-nên-chứa-secret-api-key-và-env-var)
 - [Câu 134: Checklist bảo mật Frontend toàn diện](#câu-134-checklist-bảo-mật-frontend-toàn-diện)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 122: XSS là gì? Stored, Reflected và DOM-based khác nhau thế nào?
@@ -57,6 +60,9 @@ element.textContent = comment; // safe
 **Trade-off:** Stored fix ở backend (escape khi render) + frontend (không `innerHTML`). DOM-based phải fix ở frontend, khó phát hiện bằng scan server.
 
 **Câu hỏi đào sâu:** Vì sao React `{userInput}` đã an toàn còn `dangerouslySetInnerHTML` thì không? DOM-based XSS vì sao WAF không chặn được?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -114,6 +120,9 @@ function safeUrl(url: string) {
 
 **Câu hỏi đào sâu:** Vì sao `DOMPurify` tốt hơn tự regex loại `<script>`? `textContent` khác `innerText` khác `innerHTML` thế nào về XSS?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 124: CSRF là gì? SameSite Cookie hoạt động thế nào?
@@ -159,6 +168,9 @@ Set-Cookie: session=abc123; HttpOnly; Secure; SameSite=Lax; Path=/; Max-Age=3600
 **Trade-off:** `SameSite` là phòng tuyến đầu, nhưng không đủ một mình - cần thêm CSRF token và check `Origin`/`Referer` cho API quan trọng. `SameSite=None` phải `Secure`, không chạy HTTP.
 
 **Câu hỏi đào sâu:** Vì sao `<img src="https://bank.com/transfer">` vẫn gửi cookie dù là GET? Vì sao API state-changing không bao giờ nên dùng GET?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -206,6 +218,9 @@ app.post('/api/transfer', (req, res) => {
 
 **Câu hỏi đào sâu:** Vì sao CSRF Token phải gửi qua header thay vì cookie? Double Submit Cookie pattern khác gì Synchronizer Token?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 126: JWT - cấu trúc, ưu nhược điểm vs Session
@@ -249,6 +264,9 @@ res.setHeader('Set-Cookie', `sid=${sessionId}; HttpOnly; Secure; SameSite=Lax; P
 **Trade-off:** JWT hợp cho API public, microservices, SSO. Session hợp cho web truyền thống cần revoke/logout ngay. Nhiều hệ thống dùng **JWT ngắn hạn (15p) + Refresh Token + Redis blacklist** để cân bằng.
 
 **Câu hỏi đào sâu:** Vì sao JWT không nên lưu `role` nhạy cảm mà không check DB? `alg: none` attack là gì?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -304,6 +322,9 @@ async function apiFetch(url: string, opts: RequestInit = {}) {
 
 **Câu hỏi đào sâu:** Vì sao phải rotation refresh token? Làm sao xử lý khi 2 tab cùng refresh cùng lúc gây race?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 128: Lưu token ở đâu? localStorage vs HttpOnly Cookie vs Memory
@@ -344,6 +365,9 @@ let accessToken: string | null = null; // closure
 **Trade-off:** HttpOnly + SameSite chống XSS nhưng mở CSRF, phải thêm token. Memory an toàn nhưng UX cần silent refresh. localStorage tiện nhưng là mục tiêu số 1 của XSS.
 
 **Câu hỏi đào sâu:** Vì sao `HttpOnly` không chặn được CSRF? Khi nào chấp nhận lưu token trong localStorage (ví dụ mobile WebView)?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -389,6 +413,9 @@ const res = await fetch('/api/auth/callback', { method: 'POST', body: JSON.strin
 **Trade-off:** PKCE thêm bước nhưng bắt buộc cho SPA. Không bao giờ dùng Implicit (`response_type=token`) - token lộ trong URL/history. Luôn dùng `state` và validate `iss`, `aud`, `nonce` trong `id_token`.
 
 **Câu hỏi đào sâu:** Vì sao Implicit flow bị deprecated? `state` và `nonce` khác nhau thế nào? Khi nào cần `client_secret` và khi nào không?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -442,6 +469,9 @@ Check thêm: `//evil.com` (protocol-relative), `https://shop.com.evil.com`, `htt
 
 **Câu hỏi đào sâu:** Vì sao `//evil.com` vẫn là open redirect dù không có `https:`? Làm sao attacker lợi dụng open redirect để bypass CSP?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 131: Clickjacking - X-Frame-Options và frame-ancestors
@@ -489,6 +519,9 @@ if (window.top !== window.self) {
 **Trade-off:** `DENY` an toàn nhất nhưng nếu bạn cần embed (ví dụ widget) thì phải `frame-ancestors` whitelist. `X-Frame-Options` không hỗ trợ nhiều origin, nên luôn kèm CSP.
 
 **Câu hỏi đào sâu:** `frame-ancestors` khác `child-src` thế nào? Vì sao `X-Frame-Options` vẫn cần dù đã có CSP?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -550,6 +583,9 @@ app.post('/csp-report', express.json({ type: 'application/csp-report' }), (req, 
 
 **Câu hỏi đào sâu:** `nonce` vs `hash` khác gì? `strict-dynamic` để làm gì và khi nào dùng?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 133: Frontend có nên chứa secret? API key và env var
@@ -607,6 +643,9 @@ app.post('/api/payments', async (req,res)=>{
 
 **Câu hỏi đào sâu:** `NEXT_PUBLIC_` khác biến server-only thế nào trong Next.js? Làm sao restrict API key theo domain?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 134: Checklist bảo mật Frontend toàn diện
@@ -652,4 +691,5 @@ console.log('user', { id: user.id, email: user.email }); // ✅
 
 **Câu hỏi đào sâu:** `X-Content-Type-Options: nosniff` chặn gì? `Permissions-Policy` để làm gì? Làm sao tự động check bundle có leak secret?
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---

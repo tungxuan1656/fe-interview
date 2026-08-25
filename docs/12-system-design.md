@@ -8,6 +8,9 @@
 - [Bài 2: Chat Realtime - Conversation, Message, Typing, Online, Notification](#bài-2-chat-realtime---conversation-message-typing-online-notification)
 - [Bài 3: Dashboard Big Data - 20 Charts, Filters, Realtime, Export CSV, Millions Records](#bài-3-dashboard-big-data---20-charts-filters-realtime-export-csv-millions-records)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Bài 1: E-commerce - Product Listing, Detail, Search, Filter, Cart, Checkout, Payment, Order
@@ -138,6 +141,9 @@ useInfiniteQuery({
 - Khi 100k SKU, Elasticsearch mapping và debounce search thế nào để không DDoS?
 - Làm sao handle out-of-stock optimistic (inventory check ở checkout)?
 - SEO cho 100k product: `generateStaticParams` full hay chỉ top? Sitemap 50k limit?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -277,6 +283,9 @@ socket.on('connect', () => {
 - WS scale 10k concurrent: sticky session vs Redis adapter? Làm sao deploy zero-downtime?
 - End-to-end encryption: FE phải làm gì (Signal protocol)?
 - Search message: Elasticsearch hay Postgres full-text? Phân trang search khác load history thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -441,4 +450,5 @@ function RevenueChart({ data }: { data: Point[] }) {
 - Realtime + filter: khi filter đổi, WS có phải resubscribe không? Làm sao tránh race giữa REST và WS?
 - Memory: 20 charts mỗi 10k points = 200k DOM/canvas, làm sao GC khi tab ẩn (Page Visibility)?
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---

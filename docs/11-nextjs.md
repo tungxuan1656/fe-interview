@@ -19,6 +19,9 @@
 - [Câu 185: Tối ưu Next.js App - Image, Font, Script, Bundle](#câu-185-tối-ưu-nextjs-app---image-font-script-bundle)
 - [Câu 186: Data Fetching trong Next.js - fetch, cache, revalidate](#câu-186-data-fetching-trong-nextjs---fetch-cache-revalidate)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 173: SSR vs SSG vs ISR - phân biệt và khi nào dùng?
@@ -74,6 +77,9 @@ export async function POST(req: Request) {
 
 **Câu hỏi đào sâu:** ISR stale-while-revalidate hoạt động thế nào? Khi nào ISR không đủ và phải SSR?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 174: App Router vs Pages Router - khác gì?
@@ -125,6 +131,9 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 **Trade-off:** App Router mạnh nhưng **breaking change**: nhiều lib (Redux Provider, context) phải `"use client"`, `getServerSideProps` migration thủ công, và Server Component hạn chế (không `useState`). Dự án mới nên App Router, dự án cũ cân nhắc incremental adoption (`app` và `pages` cùng tồn tại).
 
 **Câu hỏi đào sâu:** Vì sao App Router dùng Server Component mặc định? `getServerSideProps` tương đương gì trong App Router?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -184,6 +193,9 @@ export default function AddToCart({ productId }: { productId: string }) {
 **Trade-off:** Server giảm JS 30-50%, nhưng không interactivity. Nếu để cả page là Client, mất lợi ích RSC.
 
 **Câu hỏi đào sâu:** Vì sao Server Component không có JS? Làm sao truyền data từ Server sang Client mà không fetch lại?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -253,6 +265,9 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
 **Trade-off:** Tách nhỏ Client thì nhiều file hơn, nhưng bundle tối ưu. Dùng `eslint-plugin-next` rule `no-unnecessary-use-client` để cảnh báo.
 
 **Câu hỏi đào sâu:** Đặt `"use client"` ở `layout.tsx` ảnh hưởng gì? Làm sao giữ Server Component bên trong Client Component?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -333,6 +348,9 @@ export default function CartButton({ id }: { id: string }) {
 
 **Câu hỏi đào sâu:** Server Action khác Route Handler khi nào? Làm sao handle error/loading với `useFormState`?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 178: Middleware - use case thực tế
@@ -392,6 +410,9 @@ export const config = {
 
 **Câu hỏi đào sâu:** Middleware chạy ở đâu (Edge vs Node)? Vì sao không nên query DB nặng trong middleware?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 179: Next.js Caching - 4 layers
@@ -449,6 +470,9 @@ revalidatePath('/products'); // xóa Full Route Cache
 
 **Câu hỏi đào sâu:** Vì sao `fetch` mặc định cache trong Next.js mà không phải no-store? Làm sao debug cache (xem `x-nextjs-cache` header)?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 180: Static vs Dynamic Rendering
@@ -504,6 +528,9 @@ export default async function Product({ params }: { params: { id: string } }) {
 **Trade-off:** Static rẻ nhưng không cá nhân hóa. Dynamic tươi nhưng TTFB cao. Dùng **Partial Prerendering (PPR - Next 15)**: shell static + dynamic hole (Suspense) để cân bằng.
 
 **Câu hỏi đào sâu:** Làm sao biết route đang static hay dynamic (xem `next build` output)? PPR giải quyết gì cho static vs dynamic?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -578,6 +605,9 @@ export const dynamic = 'force-dynamic';
 
 **Câu hỏi đào sâu:** Khi nào dùng Route Handler vs Server Action? Làm sao handle streaming/upload trong Route Handler?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 182: Streaming và Suspense trong Next.js
@@ -638,6 +668,9 @@ Timeline streaming:       [shell 50ms][--- ProductList 800ms ---] -> thấy shel
 **Trade-off:** Streaming làm **layout shift** nếu fallback không đúng kích thước, cần skeleton khớp. SEO vẫn tốt vì bot đợi streaming xong (hoặc dùng `loading.tsx` hợp lý). Không streaming cho data critical (auth).
 
 **Câu hỏi đào sâu:** Streaming khác SSR thường thế nào về HTML? `loading.tsx` và `<Suspense>` thủ công khác gì?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -719,6 +752,9 @@ export default async function Page({ params }) {
 
 **Câu hỏi đào sâu:** `generateMetadata` chạy ở đâu (server)? Làm sao test OG image và sitemap?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 184: Authentication trong Next.js - thiết kế
@@ -786,6 +822,9 @@ export default async function Dashboard() {
 **Trade-off:** `httpOnly` an toàn nhưng không đọc được từ JS, phải qua Server. Middleware không verify JWT sâu (chỉ check tồn tại), verify thật ở Server Component/API. Với role-based, thêm `x-user-role` header từ middleware.
 
 **Câu hỏi đào sâu:** Vì sao httpOnly cookie an toàn hơn localStorage? Middleware có nên verify JWT (jose) hay chỉ check tồn tại?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -857,6 +896,9 @@ export default function Page() {
 **Trade-off:** `next/image` cần `width/height` hoặc `fill`, không linh hoạt như `<img>` raw. `dynamic ssr:false` mất SEO cho phần đó. `optimizePackageImports` chỉ cho lib ESM.
 
 **Câu hỏi đào sâu:** `priority` và `loading="eager"` khác gì? `next/font` giảm CLS thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -939,4 +981,5 @@ export default function Cart() {
 
 **Câu hỏi đào sâu:** Khi nào dùng `fetch` vs Prisma trực tiếp trong Server Component? `revalidateTag` khác `revalidatePath` thế nào?
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---

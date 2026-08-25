@@ -16,6 +16,7 @@
 - [Tình huống 9: UI Flickering / Layout Shift / Search sai thứ tự / Double-click tạo 2 orders](#tình-huống-9-ui-flickering--layout-shift--search-sai-thứ-tự--double-click-tạo-2-orders)
 - [Tình huống 10: Tổng hợp Anti-pattern & Phòng ngừa hệ thống](#tình-huống-10-tổng-hợp-anti-pattern--phòng-ngừa-hệ-thống)
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---
 
 ## Quy trình Debugging Production chuẩn Senior
@@ -41,6 +42,9 @@ Reproduce → Collect logs → Monitoring → Browser/Device → Network → JS 
 | **11. Monitor** | Theo dõi 24h sau fix, alert nếu tái diễn | Sentry, Web Vitals RUM |
 
 > Nguyên tắc vàng: **Không đoán — đo.** Mỗi giả thuyết phải có bằng chứng từ log/metric trước khi fix.
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -96,6 +100,9 @@ window.addEventListener('error', (e) => {
 - Sentry `release` gắn với commit SHA, source map upload
 - Deploy với **atomic**: HTML mới phải trỏ hash mới, không serve HTML cũ + JS mới lệch
 - Thêm `ErrorBoundary` cho từng route (`error.tsx` trong App Router)
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -160,6 +167,9 @@ const meta = new WeakMap<object, string>();
 - Code review checklist: mọi `addEventListener`/`setInterval`/`subscribe` phải có `remove`/`clear`/`unsubscribe` trong `return`
 - Monitor memory RUM: `performance.memory.usedJSHeapSize` gửi về analytics, alert nếu > 500MB
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Tình huống 3: API lúc được lúc không (Flaky API)
@@ -220,6 +230,9 @@ fetch('/api/orders', {
 - BE: rate limit header `Retry-After`, FE respect
 - Contract test (Pact) để phát hiện BE đổi response
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Tình huống 4: Page load 8s - Performance thảm họa
@@ -265,6 +278,9 @@ import { format } from 'date-fns';
 - Performance budget CI: `bundlesize < 200kb`, Lighthouse CI `LCP < 2.5s`
 - RUM `web-vitals` gửi về Grafana, alert khi p75 vượt
 - `next/image`, `next/font` bắt buộc cho ảnh/font
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -318,6 +334,9 @@ const CartCount = memo(function CartCount() {
 - ESLint `react/no-unstable-nested-components`
 - Profiler trong CI (storybook + interaction test)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Tình huống 6: Mobile Safari crash / White screen chỉ trên iOS
@@ -361,6 +380,9 @@ Sentry.setTag('os', navigator.userAgent);
 - CI chạy Playwright + BrowserStack trên iOS
 - `browserslist` + `eslint-plugin-compat`
 - Sentry filter theo `os.name === 'iOS'` để phát hiện sớm
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -408,6 +430,9 @@ Sentry.setTag('locale', navigator.language);
 - Feature flag rollout 5% → 50% → 100% + kill switch
 - Seed data diverse trong E2E (emoji, null, RTL)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Tình huống 8: API trả sai format / Contract drift
@@ -451,6 +476,9 @@ async function fetchProduct(id: string): Promise<Product> {
 - FE generate type từ OpenAPI, không viết tay
 - CI chạy `zod` parse với fixture thực tế từ staging
 - Pact consumer-driven contract test
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -542,6 +570,9 @@ const debouncedSubmit = useDebouncedCallback(onSubmit, 1000, { leading: true, tr
 - Mọi async đều có `AbortController` hoặc Query
 - Mọi mutation quan trọng đều có `Idempotency-Key` + `disabled`
 - Mọi search đều debounce + abort
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 

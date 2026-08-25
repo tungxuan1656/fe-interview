@@ -22,6 +22,9 @@
 - [Câu 84: Khi nào nên dùng micro-frontend?](#câu-84-khi-nào-nên-dùng-micro-frontend)
 - [Câu 85: Khi nào không nên dùng micro-frontend và alternative?](#câu-85-khi-nào-không-nên-dùng-micro-frontend-và-alternative)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 69: Tổ chức cấu trúc dự án lớn - tiêu chí và sai lầm phổ biến
@@ -50,6 +53,9 @@ src/
 **Trade-off:** FSD/Feature-based thêm boilerplate, over-engineering cho app 5 trang. App nhỏ nên bắt đầu layer-based đơn giản, khi > 50 components hoặc > 5 dev thì refactor sang feature.
 
 **Câu hỏi đào sâu:** Làm sao enforce ranh giới tầng bằng ESLint `no-restricted-imports`? Khi nào nên tách `shared` thành package riêng trong monorepo?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -88,6 +94,9 @@ src/shared/api/client.ts
 **Trade-off:** Feature-based làm trùng lặp nhẹ (mỗi feature có `utils` riêng) nhưng đổi lại isolation tốt. Layer-based DRY hơn nhưng dễ tạo `utils` khổng lồ 200 hàm không ai dám xóa.
 
 **Câu hỏi đào sâu:** Làm sao xử lý khi 2 feature cần share 1 component? Khi nào nên promote từ `features/X/ui` lên `shared/ui`?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -132,6 +141,9 @@ export const bus = mitt<{ cartUpdated: { id: string } }>();
 **Trade-off:** Event bus làm flow khó trace hơn import trực tiếp. Inversion qua props làm component API rộng hơn. Chọn inversion cho UI, event cho side-effect.
 
 **Câu hỏi đào sâu:** Vì sao nên dùng `index.ts` public API cho mỗi feature? Làm sao phát hiện vòng tròn dependency bằng `madge` hoặc `eslint-plugin-import`?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -182,6 +194,9 @@ Quy trình: Figma → Token → Storybook (document + visual test) → Chromatic
 
 **Câu hỏi đào sâu:** Làm sao versioning design system không làm các app kẹt ở version cũ? Khi nào nên headless thay vì styled sẵn?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 73: Thế nào là reusable component tốt?
@@ -230,6 +245,9 @@ type TextProps<C extends React.ElementType> = {
 **Trade-off:** Component quá generic sẽ API phức tạp (như `as` polymorphic). Rule: chỉ abstract khi có 3 use case thật, không phải 1 use case + 2 tưởng tượng (Rule of Three).
 
 **Câu hỏi đào sâu:** Khi nào nên tách `Card` thành `Card` + `CardHeader` + `CardActions` (compound)? Làm sao type `as` prop an toàn với TypeScript?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -287,6 +305,9 @@ Chiến thuật tách an toàn: không rewrite 1 lần, mà **Extract từng ph�
 
 **Câu hỏi đào sâu:** Làm sao quyết định state nào nên ở lại parent, state nào colocate xuống con? Khi nào dùng `children` để tránh re-render khi tách?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 75: Shared State - khi nào cần, khi nào thừa?
@@ -332,6 +353,9 @@ function useProductFilter() {
 **Trade-off:** Global state làm component khó test (phải mock store), khó reuse (phụ thuộc implicit). Local state dễ test, dễ xóa. Ưu tiên **colocation** (Kent C. Dodds).
 
 **Câu hỏi đào sâu:** Vì sao URL là nơi share state tốt nhất cho filter/pagination? Làm sao phát hiện shared state thừa bằng code review?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -382,6 +406,9 @@ const [isHovered, setHovered] = useState(false);
 **Trade-off:** Nhiều loại state làm onboard phức tạp, cần document quy tắc. Nhưng rõ ràng hơn 1 Redux store chứa hết.
 
 **Câu hỏi đào sâu:** Vì sao không nên lưu server state trong Redux? Khi nào cart nên ở server state thay vì client global?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -440,6 +467,9 @@ const useThemeStore = create(set => ({ theme: 'light', toggle: () => set(s => ({
 **Trade-off:** Thêm React Query là thêm dependency, nhưng tiết kiệm 70% code fetch thủ công và bug. Đừng trộn server state vào Zustand - sẽ phải tự implement cache.
 
 **Câu hỏi đào sâu:** `staleTime` vs `cacheTime` (gcTime) khác gì? Khi nào dùng optimistic update thay vì invalidate?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -510,6 +540,9 @@ export const fetchWithRetry = async (fn: () => Promise<any>, retries = 3) => {
 
 **Câu hỏi đào sâu:** Làm sao queue request khi đang refresh token? Khi nào dùng `AbortController` để cancel request khi component unmount?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 79: Error Handling toàn app - Error Boundary, global handler và fallback
@@ -569,6 +602,9 @@ async function onSubmit() {
 
 **Câu hỏi đào sâu:** Vì sao Error Boundary không bắt được lỗi trong `setTimeout` hay `Promise`? Làm sao kết hợp Error Boundary với Suspense để bắt lỗi fetch?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 80: Xử lý Loading / Error / Empty State nhất quán
@@ -624,6 +660,9 @@ function EmptyState({ title, action }: { title: string; action?: React.ReactNode
 
 **Câu hỏi đào sâu:** Skeleton vs Spinner khi nào dùng cái nào? Làm sao test empty state mà không cần mock API trả rỗng?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 81: Chiến lược migrate legacy code an toàn
@@ -671,6 +710,9 @@ function App() {
 **Trade-off:** Dual-run tốn bundle (phải load cả cũ lẫn mới), tốn thời gian. Nhưng an toàn hơn big-bang rewrite 6 tháng không release được. Luôn migrate khi vẫn giao feature mới - đừng đóng băng.
 
 **Câu hỏi đào sâu:** Làm sao thuyết phục product cho thời gian migrate? Khi nào nên dùng iframe/micro-frontend để cô lập legacy thay vì adapter?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -726,6 +768,9 @@ Quy tắc vàng: **Mỗi PR < 300 dòng, có test, có screenshot Chromatic, và
 
 **Câu hỏi đào sâu:** Làm sao viết codemod an toàn cho 500 file? Khi nào nên dùng `ts-morph` thay vì `jscodeshift`?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 83: Micro-frontend là gì? Các pattern triển khai
@@ -778,6 +823,9 @@ bus.emit('cart:updated', { count: 3 });
 
 **Câu hỏi đào sâu:** Module Federation khác Single-SPA thế nào? Làm sao share `react` singleton mà không gây 2 version React?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 84: Khi nào nên dùng micro-frontend?
@@ -816,6 +864,9 @@ Ví dụ nên dùng: Shopee/Lazada - team search, cart, payment tách biệt, m�
 **Trade-off:** Đánh đổi complexity để lấy autonomy. Nếu team nhỏ mà cố MFE, bạn sẽ trả giá complexity mà không hưởng autonomy.
 
 **Câu hỏi đào sâu:** Làm sao thuyết phục CTO rằng MFE đáng giá? Metric nào chứng minh monolith đang kìm hãm team?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -870,4 +921,5 @@ Alternative tốt hơn 90% case:
 
 **Câu hỏi đào sâu:** Làm sao biết monolith đã đến giới hạn? Nếu chỉ cần cô lập CSS/JS của 1 widget, dùng Web Component thay MFE được không?
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---

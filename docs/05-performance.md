@@ -24,6 +24,9 @@
 - [Câu 103: Memory Leak trong React - nguyên nhân và cách phát hiện](#câu-103-memory-leak-trong-react---nguyên-nhân-và-cách-phát-hiện)
 - [Câu 104: Performance Budget và monitoring production](#câu-104-performance-budget-và-monitoring-production)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 86: Nguyên nhân khiến Frontend chậm - các nhóm bottleneck
@@ -65,6 +68,9 @@ function thrashing() {
 **Trade-off:** Tối ưu network (split, compress) dễ, lợi nhiều, nên làm trước. Tối ưu compute/render cần đo profiler, không làm mù.
 
 **Câu hỏi đào sâu:** Làm sao phân biệt chậm do network vs chậm do main thread bằng DevTools? Vì sao third-party script là killer của INP?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -113,6 +119,9 @@ console.log(performance.getEntriesByName('fetch'));
 
 **Câu hỏi đào sâu:** Lab vs Field khác gì và vì sao Google dùng field cho SEO? p75 là gì và vì sao không dùng average?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 88: Core Web Vitals tổng quan - LCP, INP, CLS
@@ -154,6 +163,9 @@ onLCP(metric => {
 **Trade-off:** Tối ưu LCP thường làm tăng CLS nếu không reserve space, tối ưu INP (giảm JS) có thể làm tăng LCP nếu lazy quá mức. Phải cân bằng.
 
 **Câu hỏi đào sâu:** Vì sao INP thay FID? p75 và p98 khác gì? CrUX vs RUM tự đo khác nhau thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -202,6 +214,9 @@ onLCP(metric => {
 **Trade-off:** Preload hero giúp LCP nhưng tốn bandwidth nếu user không thấy hero (ví dụ hero dưới fold). Chỉ preload **above-the-fold** LCP.
 
 **Câu hỏi đào sâu:** Browser chọn LCP candidate thế nào? Vì sao `loading="lazy"` cho hero lại giết LCP? `fetchpriority="high"` khác `preload` thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -268,6 +283,9 @@ async function processLargeArray(array) {
 
 **Câu hỏi đào sâu:** Vì sao INP lấy p98 thay vì average? Làm sao phát hiện long task gây INP bằng Performance tab?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 91: CLS (Cumulative Layout Shift) chi tiết
@@ -323,6 +341,9 @@ onCLS(metric => {
 **Trade-off:** Reserve space làm trang có khoảng trắng nếu content chưa có, nhưng tránh CLS. `font-display: optional` giảm CLS nhưng có thể không hiện font custom trên 3G chậm.
 
 **Câu hỏi đào sâu:** `impactFraction` và `distanceFraction` tính thế nào? Vì sao `transform: translate` không gây CLS còn `top` thì có?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -394,6 +415,9 @@ import Image from 'next/image';
 
 **Câu hỏi đào sâu:** Làm sao xác định element nào là LCP bằng DevTools? Vì sao `background-image` tệ cho LCP hơn `<img>`?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 93: Giảm bundle size - chiến lược toàn diện
@@ -447,6 +471,9 @@ const Chart = dynamic(() => import('../components/Chart'), { ssr: false });
 **Trade-off:** Direct import làm import dài hơn, nhưng bundle nhỏ hơn. Thay lib tốn công, nhưng lợi lâu dài. Đừng micro-optimize khi chưa đo.
 
 **Câu hỏi đào sâu:** Vì sao barrel export giết tree-shaking? `sideEffects: false` có tác dụng gì với Webpack/Rollup?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -521,6 +548,9 @@ const { a } = require('./utils'); // bundler không biết b có dùng không
 
 **Câu hỏi đào sâu:** `React.lazy` chỉ support default export, làm sao handle named export? `import()` dynamic khác `import` static thế nào về bundling?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 95: Image Optimization
@@ -591,6 +621,9 @@ function LazyImage({ src }: { src: string }) {
 
 **Câu hỏi đào sâu:** `srcset` + `sizes` browser chọn ảnh thế nào? Vì sao không nên `loading="lazy"` cho LCP image?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 96: Font Optimization
@@ -645,6 +678,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 **Trade-off:** `swap` cho UX tốt (thấy text ngay) nhưng CLS nếu metric lệch. `optional` không CLS nhưng có thể không hiện font custom trên 3G. Subset giảm size nhưng nếu cần đa ngôn ngữ thì phải thêm subset.
 
 **Câu hỏi đào sâu:** `font-display: swap` vs `optional` vs `fallback` khác gì? `size-adjust` giảm CLS thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -702,6 +738,9 @@ import Link from 'next/link';
 **Trade-off:** Preload nhiều làm tranh bandwidth với LCP, chỉ preload 1-2 critical. Prefetch tốn data user, chỉ prefetch khi chắc user sẽ navigate (hover, viewport). Preconnect 2-3 origin là đủ, nhiều hơn tốn socket.
 
 **Câu hỏi đào sâu:** Preload vs Prefetch priority khác gì? Vì sao preconnect cần `crossorigin` cho font/CDN? Khi nào dùng `dns-prefetch` thay vì `preconnect`?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -767,6 +806,9 @@ fetch('/api/products', { next: { revalidate: 60 } }); // ISR
 
 **Câu hỏi đào sâu:** `no-cache` vs `no-store` khác gì? `stale-while-revalidate` hoạt động thế nào? Vì sao asset phải hash tên file mới dám `immutable`?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 99: Browser Cache vs CDN Cache vs Service Worker Cache
@@ -820,6 +862,9 @@ self.addEventListener('fetch', e => {
 **Trade-off:** CDN cache share nên hit rate cao, nhưng purge chậm (vài giây-phút). SW cache mạnh nhưng thêm complexity, phải handle update, và chỉ chạy trên HTTPS. Đừng cache HTML cá nhân hóa ở CDN.
 
 **Câu hỏi đào sâu:** `s-maxage` vs `max-age` khác gì? Khi nào dùng `stale-while-revalidate` ở CDN? Service Worker cache khác HTTP cache thế nào về lifecycle?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -881,6 +926,9 @@ import { FixedSizeList } from 'react-window';
 
 **Câu hỏi đào sâu:** Vì sao virtualization dùng `transform: translateY` thay vì `top`? Overscan là gì và bao nhiêu là đủ?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 101: Virtualization hoạt động thế nào? So sánh thư viện
@@ -940,6 +988,9 @@ import { FixedSizeList } from 'react-window';
 
 **Câu hỏi đào sâu:** Dynamic height đo thế nào mà không gây layout thrashing? Vì sao `Ctrl+F` không work với virtual list?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 102: Scroll lag debug - long task, layout thrashing, compositor
@@ -989,6 +1040,9 @@ elements.forEach(el => io.observe(el));
 **Trade-off:** `will-change` tạo layer mới, tốn GPU memory, chỉ dùng cho element thực sự animate. `rAF` giảm lag nhưng thêm 1 frame delay.
 
 **Câu hỏi đào sâu:** Vì sao `transform` chạy trên compositor còn `top` thì không? `will-change` lạm dụng gây gì?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -1053,6 +1107,9 @@ obj = null; // GC được, entry tự mất
 **Trade-off:** `WeakMap`/`WeakRef` không leak nhưng không có `size`, không iterate. Đừng dùng `WeakMap` khi cần duyệt cache.
 
 **Câu hỏi đào sâu:** Detached DOM là gì và tìm thế nào trong DevTools? Vì sao `setInterval` trong `useEffect` không cleanup sẽ leak cả component?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -1124,4 +1181,5 @@ Sentry.init({
 
 **Câu hỏi đào sâu:** Làm sao đặt budget hợp lý cho từng route? RUM sample bao nhiêu % là đủ mà không tốn cost?
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---

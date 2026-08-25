@@ -17,6 +17,9 @@
 - [Câu 171: Snapshot testing - khi nào hữu ích, khi nào hại?](#câu-171-snapshot-testing---khi-nào-hữu-ích-khi-nào-hại)
 - [Câu 172: Code Coverage, Flaky Test và chiến lược test hiệu quả](#câu-172-code-coverage-flaky-test-và-chiến-lược-test-hiệu-quả)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 161: Unit vs Integration vs E2E - phân biệt
@@ -66,6 +69,9 @@ test('render list từ API', async () => {
 
 **Câu hỏi đào sâu:** Vì sao Kent C. Dodds nói "càng gần user, càng tự tin"? Unit test cho component có phải lúc nào cũng cần?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 162: Testing Pyramid là gì? Vì sao không chỉ viết E2E?
@@ -106,6 +112,9 @@ Ngược lại, chỉ unit thì **tin cậy thấp**: mock quá nhiều, không 
 **Trade-off:** Dự án startup có thể chấp nhận pyramid dẹt: ít E2E hơn, tăng integration. App ngân hàng thì E2E nhiều hơn nhưng vẫn phải giữ pyramid, không để thành cone.
 
 **Câu hỏi đào sâu:** Testing Trophy khác Pyramid thế nào? Khi nào nên phá pyramid và tăng E2E?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -168,6 +177,9 @@ function renderWithProviders(ui: React.ReactElement) {
 
 **Câu hỏi đào sâu:** Vì sao `getByRole` tốt hơn `getByTestId`? `findBy` khác `getBy` + `waitFor` thế nào?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 164: Jest vs Vitest - khác gì, chọn gì?
@@ -218,6 +230,9 @@ test('mock', () => {
 > Update 2025: Vitest 3.x + Vite 6, coverage v8/browserslist
 
 **Câu hỏi đào sâu:** Vì sao Vitest nhanh hơn Jest? Khi nào vẫn phải dùng Jest (React Native, legacy Babel)?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -270,6 +285,9 @@ test('user mở modal và thấy form', async () => {
 
 **Câu hỏi đào sâu:** Vì sao RTL khuyến khích `getByRole`? Enzyme shallow vs RTL mount khác triết lý thế nào?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 166: Vì sao không test implementation detail?
@@ -321,6 +339,9 @@ test('bền: hiển thị product từ API', async () => {
 **Trade-off:** Đôi khi test implementation nhanh hơn (spy `localStorage.setItem`). Chấp nhận nếu đó là **contract** (persist), nhưng ưu tiên test observable: "reload vẫn thấy cart" thay vì "đã gọi setItem".
 
 **Câu hỏi đào sâu:** Khi nào test implementation detail là chấp nhận được? Làm sao biết mình đang test detail thay vì behavior?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -389,6 +410,9 @@ test('hiển thị lỗi khi API 500', async () => {
 
 **Câu hỏi đào sâu:** MSW khác `vi.mock('axios')` thế nào về độ tin cậy? Khi nào vẫn cần `vi.mock` dù đã có MSW?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 168: Playwright vs Cypress - chọn gì cho E2E?
@@ -446,6 +470,9 @@ export default defineConfig({
 **Trade-off:** Cypress DX dễ cho người mới, nhưng Playwright là **chuẩn mới cho 2024-2026**: nhanh, free parallel, cross-browser thật, Microsoft hậu thuẫn. Trừ khi team đã đầu tư Cypress Cloud, nên chọn Playwright.
 
 **Câu hỏi đào sâu:** Vì sao Playwright ít flaky hơn Cypress? Khi nào vẫn chọn Cypress (plugin ecosystem, team quen)?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -527,6 +554,9 @@ test('flow mua hàng', async ({ page }) => {
 
 **Câu hỏi đào sâu:** Vì sao không nên có nhiều E2E cho cùng flow? Làm sao giảm flaky cho E2E checkout (network, animation)?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 170: Test custom hook như thế nào?
@@ -598,6 +628,9 @@ test('useProducts hook', async () => {
 
 **Câu hỏi đào sâu:** `act` để làm gì? Vì sao phải `vi.useFakeTimers` + `advanceTimers` cho debounce?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 171: Snapshot testing - khi nào hữu ích, khi nào hại?
@@ -664,6 +697,9 @@ test('ProductPage hiển thị đúng', async () => {
 **Trade-off:** Snapshot rẻ nhưng **độ tin cậy thấp** nếu không review. Nhiều team senior bỏ snapshot cho UI, chỉ giữ cho serialize/config.
 
 **Câu hỏi đào sâu:** Vì sao snapshot lớn làm team "mù" với update? Khi nào `toMatchInlineSnapshot` tốt hơn `toMatchSnapshot`?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -736,4 +772,5 @@ beforeEach(() => { count = 0; });
 
 **Câu hỏi đào sâu:** Vì sao 100% coverage vẫn có bug? Làm sao phát hiện và cách ly flaky test trong CI?
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---

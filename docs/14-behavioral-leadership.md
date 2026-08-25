@@ -18,6 +18,9 @@
 - [Câu 198: Phân chia task trong team - làm sao công bằng và hiệu quả?](#câu-198-phân-chia-task-trong-team---làm-sao-công-bằng-và-hiệu-quả)
 - [Câu 199: Khi nào tự code vs delegate cho người khác?](#câu-199-khi-nào-tự-code-vs-delegate-cho-người-khác)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 187: Review code Junior - làm sao vừa nghiêm vừa không làm nản?
@@ -37,6 +40,9 @@
 
 **Tips:** Dùng Conventional Comments (`nit:`, `suggestion:`, `issue:`), bật `CODEOWNERS`, auto-format/lint để không tranh cãi style.
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 188: Junior không đồng ý với review của bạn
@@ -48,6 +54,9 @@
 **Trade-off:** Ép theo ý mình → mất trust. Nhường vô nguyên tắc → codebase loạn. Senior chọn **đo + quy tắc chung**.
 
 **Câu nói mẫu:** "Mình hiểu góc của em. Mình cùng đo profiler 1 phút nhé, nếu không khác thì mình giữ code đơn giản hơn, em thấy ok không?"
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -68,6 +77,9 @@
 - Decision: Zustand+Query (ít boilerplate, đúng loại state)
 - Consequence: 2 lib, cần guideline khi nào dùng store vs query
 ```
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -90,6 +102,9 @@ const fee = 30000;
 
 **STAR ví dụ:** "Dự án promo Tết, BE chưa có API tính phí. Mình hardcode phí 30k để kịp deadline, tạo ticket refactor, và 2 tuần sau khi BE xong thì fix. Nếu không vay thì lỡ mùa cao điểm."
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 191: Deadline gấp mà code chưa tốt - ship hay delay?
@@ -105,6 +120,9 @@ const fee = 30000;
 
 **Tips:** Đừng im lặng ship code xấu — **communicate**, **flag**, **monitor**.
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 192: Kể về một quyết định sai của bạn
@@ -114,6 +132,9 @@ const fee = 30000;
 > **STAR:** *Situation* - Mình từng chọn `Redux + redux-saga` cho app nhỏ 10 trang vì "chuẩn enterprise". *Task* - Cần state đơn giản. *Action* - Mình over-engineer, boilerplate nhiều, Junior mất 2 tuần onboarding. *Result* - Velocity chậm, bug saga khó debug. *Lesson* - Mình migrate sang Zustand+Query trong 1 sprint, velocity tăng 30%. Bài học: **chọn boring solution**, **phù hợp scale hiện tại**, không phải scale tưởng tượng. Giờ mình luôn hỏi "Nếu app chỉ 10 trang, cần Redux không?" trước khi quyết.
 
 **Cách kể hay:** Thành thật, nói **mình đã sửa thế nào** và **quy tắc mới** để không lặp lại. Nhà tuyển dụng đánh giá **self-awareness** hơn là không sai bao giờ.
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -127,6 +148,9 @@ const fee = 30000;
 
 **Trade-off:** Đổi stack tốn thời gian, risk regression. Phải chứng minh **ROI rõ ràng** (ví dụ tiết kiệm 10h build/tháng).
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 194: PM yêu cầu feature bạn cho là không nên làm
@@ -139,6 +163,9 @@ const fee = 30000;
 
 **Mẫu câu:** "Mình hiểu mục tiêu là tăng conversion. Mình lo là cách này sẽ làm chậm trang và tốn 2 tuần. Mình đề xuất cách B nhanh hơn, mình cùng thử nhé?"
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 195: Backend không đồng ý với API design bạn đề xuất
@@ -150,6 +177,9 @@ const fee = 30000;
 **STAR:** "Mình cần `GET /products?include=inventory,price` để tránh 3 request. BE lo query nặng. Mình đề xuất `GET /api/bff/products` (BFF gom) hoặc `?expand=inventory` optional, BE ok vì không ảnh hưởng client khác. Viết OpenAPI, generate type, cả 2 cùng happy."
 
 **Trade-off:** Đừng đòi API "chuẩn REST" khi FE cần performance — hãy nói về **user impact**.
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -169,6 +199,9 @@ const fee = 30000;
 
 **Câu nói phỏng vấn:** "Mình ưu tiên **giảm thiệt hại** trước, **hiểu nguyên nhân** sau. Không fix lớn khi đang cháy."
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 197: Mentor Junior - cách bạn giúp họ grow?
@@ -181,6 +214,9 @@ const fee = 30000;
 
 **Anti-pattern:** Giao task quá khó → nản, giao quá dễ → chán, chỉ chê không khen → mất động lực.
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 198: Phân chia task trong team - làm sao công bằng và hiệu quả?
@@ -192,6 +228,9 @@ const fee = 30000;
 **Cách làm:** Sprint planning: list task, estimate story point, phân theo **capacity** không phải **số task**. Dùng **RACI** cho task lớn. Daily check blocker, không micro-manage.
 
 **Ví dụ:** "Sprint có 5 task: 2 khó (search, payment), 3 vừa. Mình nhận payment (risk cao), Junior A làm search pair với mình, Junior B làm 2 task vừa + 1 task học (viết test)."
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 

@@ -22,6 +22,9 @@
 - [Câu 120: Storage nâng cao - IndexedDB, Cache API, OPFS](#câu-120-storage-nâng-cao---indexeddb-cache-api-opfs)
 - [Câu 121: Bảo mật Browser - XSS, CSRF, CSP và SOP/CORS](#câu-121-bảo-mật-browser---xss-csrf-csp-và-sopcors)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 105: Browser Render Pipeline - từ HTML đến pixel
@@ -79,6 +82,9 @@ Pipeline của Chromium (Blink) có 6 bước chính, mỗi bước đều có t
 
 **Câu hỏi đào sâu:** Vì sao CSS là render-blocking còn JS là parser-blocking? `preload scanner` làm gì để giảm block?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 106: Reflow, Repaint và Composite - khác nhau thế nào?
@@ -125,6 +131,9 @@ els.forEach((el, i) => (el.style.height = heights[i] + 10 + 'px')); // ghi hết
 **Trade-off:** Dùng `transform` thay `top/left` để chỉ composite, nhưng `transform` không ảnh hưởng layout (không đẩy element khác), nên không phải lúc nào cũng thay thế được.
 
 **Câu hỏi đào sâu:** Thuộc tính nào trigger reflow, repaint, composite? Vì sao đọc `offsetHeight` lại force reflow?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -182,6 +191,9 @@ element.addEventListener('transitionend', () => {
 **Trade-off:** Layer tốn GPU memory (mỗi layer vài MB), tạo 100 layer làm memory phình, composite chậm hơn. Chỉ tạo cho element thực sự animate/scroll, không `will-change: transform` cho hết trang. Luôn xóa `will-change` sau khi xong. Lưu ý: `will-change` cũng tạo stacking context và containing block như `transform`, nên cũng có thể phá `position: fixed` của con cháu — không lạm dụng.
 
 **Câu hỏi đào sâu:** `will-change` lạm dụng gây gì? Vì sao `position: fixed` luôn có layer riêng? Làm sao đo GPU memory của layer?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -242,6 +254,9 @@ Lưu ý: `transform` trên ancestor sẽ **phá fixed** - `fixed` sẽ fixed the
 
 **Câu hỏi đào sâu:** Vì sao `transform` trên parent lại làm `position: fixed` bị "kẹt"? `sticky` khác `fixed` thế nào về compositing?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 109: transform vs top/left - vì sao transform mượt hơn?
@@ -298,6 +313,9 @@ Thêm nữa, `transform` dùng **sub-pixel** và GPU interpolation, còn `top/le
 
 **Câu hỏi đào sâu:** Vì sao `transform` không gây reflow? Compositor thread khác main thread thế nào? Khi nào buộc phải dùng `top/left` thay vì `transform`?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 110: Event Propagation - capturing, bubbling và delegation
@@ -346,6 +364,9 @@ document.addEventListener('focus', handler, true); // capture để bắt focus
 **Trade-off:** Delegation tiết kiệm nhưng `e.target` có thể là descendant sâu, cần `closest`. Không delegate được event không bubble nếu không dùng capture.
 
 **Câu hỏi đào sâu:** Vì sao React 17 đổi delegation từ `document` sang `root`? `stopPropagation` trong React có chặn được native listener trên `document` không?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -415,6 +436,9 @@ app.use(cors({
 
 **Câu hỏi đào sâu:** Vì sao `Content-Type: application/json` lại trigger preflight còn `text/plain` thì không? `Vary: Origin` để làm gì với CDN?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 112: Cookie vs localStorage vs sessionStorage
@@ -465,6 +489,9 @@ sessionStorage.setItem('tabId', crypto.randomUUID());
 **Trade-off:** Cookie tự gửi tiện nhưng tốn bandwidth (mỗi request kèm cookie), và CSRF. localStorage không gửi nên tiết kiệm, nhưng phải tự gắn header, và XSS risk. Với auth hiện đại, ưu tiên **httpOnly cookie + SameSite** cho refresh token, **memory** cho access token.
 
 **Câu hỏi đào sâu:** Vì sao không nên lưu JWT trong localStorage? `SameSite=Lax` vs `Strict` vs `None` khác gì và ảnh hưởng CSRF thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -520,6 +547,9 @@ img.onload = () => {
 
 **Câu hỏi đào sâu:** SOP chặn đọc response nhưng có chặn gửi request không? Vì sao `<img>` và `<script>` lại được cross-origin còn `fetch` thì không?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 114: HTTP/1.1 vs HTTP/2 vs HTTP/3 - tiến hóa
@@ -568,6 +598,9 @@ fetch('/').then(() => console.log(performance.getEntriesByType('navigation')[0].
 
 **Câu hỏi đào sâu:** Head-of-line blocking ở HTTP/1.1, HTTP/2 và TCP khác nhau thế nào? Vì sao HTTP/3 dùng QUIC thay vì TCP?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 115: HTTP/2 chi tiết - multiplexing, header compression, priority
@@ -615,6 +648,9 @@ res.writeEarlyHints({ link: '</style.css>; rel=preload; as=style' });
 **Trade-off:** Multiplex làm nhiều file nhỏ không sao, nhưng quá nhiều stream (100+) vẫn tốn HPACK table và server memory. Priority H2 không hoàn hảo, nên dùng `fetchpriority`/`preload` để hint. Server Push đã bỏ, đừng dùng.
 
 **Câu hỏi đào sâu:** Vì sao Server Push bị deprecated? `103 Early Hints` thay thế thế nào? HPACK khác QPACK (H3) thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -679,6 +715,9 @@ function connect() {
 
 **Câu hỏi đào sâu:** WebSocket khác HTTP polling/long-polling thế nào về overhead? Làm sao scale WebSocket với nhiều server (sticky vs Redis pub/sub)?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 117: SSE vs WebSocket - khi nào chọn gì?
@@ -735,6 +774,9 @@ ws.send(JSON.stringify({ type: 'chat', text: 'hello' })); // client gửi
 **Trade-off:** SSE đơn giản, nhưng 1 chiều nên nếu cần client gửi nhiều thì phải kết hợp `fetch` POST, thành 2 connection. WebSocket 1 connection cho cả hai chiều, nhưng phức tạp hơn. Với 90% server push 1 chiều, SSE là đủ và rẻ hơn.
 
 **Câu hỏi đào sâu:** Vì sao SSE tự reconnect còn WebSocket không? Khi nào SSE + HTTP/2 tốt hơn WebSocket về multiplexing?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -811,6 +853,9 @@ self.addEventListener('fetch', e => {
 
 **Câu hỏi đào sâu:** `skipWaiting` vs `clients.claim` khác gì? Vì sao SW update phải đợi close tab mới activate nếu không `skipWaiting`?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 119: PWA là gì? Manifest, installability và offline
@@ -873,6 +918,9 @@ window.addEventListener('offline', () => showOfflineBanner());
 
 **Câu hỏi đào sâu:** PWA khác native wrapper (Capacitor/Tauri) thế nào? `display: standalone` khác `minimal-ui` thế nào? Làm sao debug PWA installability trong DevTools Application tab?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 120: Storage nâng cao - IndexedDB, Cache API, OPFS
@@ -932,6 +980,9 @@ console.log(estimate.quota, estimate.usage); // ~60% disk
 
 **Câu hỏi đào sâu:** Vì sao IndexedDB là async còn localStorage là sync? Khi nào dùng Cache API thay vì IndexedDB?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 121: Bảo mật Browser - XSS, CSRF, CSP và SOP/CORS
@@ -978,4 +1029,5 @@ fetch('/api/transfer', { method: 'POST', headers: { 'X-CSRF-Token': getMeta('csr
 
 **Câu hỏi đào sâu:** `HttpOnly` chặn XSS đọc cookie thế nào? `SameSite=Lax` vs `Strict` ảnh hưởng CSRF và OAuth thế nào? CSP `nonce` vs `hash` khác gì?
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---

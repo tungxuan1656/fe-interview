@@ -15,6 +15,9 @@
 - [Câu 159: Thiết kế state cho ecommerce lớn - phân loại](#câu-159-thiết-kế-state-cho-ecommerce-lớn---phân-loại)
 - [Câu 160: State nào global, local, server? User/Cart/Product/Filter/Search/Order/Notification/UI](#câu-160-state-nào-global-local-server-usercartproductfiltersearchordernotificationui)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 151: Redux giải quyết gì? Vì sao cần?
@@ -64,6 +67,9 @@ function AddButton({ item }: { item: Item }) {
 **Trade-off:** Redux thêm boilerplate, complexity, và re-render nếu selector không memo. Chỉ dùng khi **state share nhiều nơi + cần trace**. Với app nhỏ, `Context` + `useReducer` hoặc `Zustand` gọn hơn.
 
 **Câu hỏi đào sâu:** Vì sao reducer phải pure và immutable? Redux khác MobX (observable) thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -132,6 +138,9 @@ function Profile() {
 
 **Câu hỏi đào sâu:** Immer hoạt động thế nào để cho phép `state.value = ...` mà vẫn immutable? `createAsyncThunk` khác `thunk` thủ công thế nào?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 153: Zustand vs Redux - khi nào chọn gì?
@@ -199,6 +208,9 @@ function AddButton({ item }: { item: Item }) {
 
 **Câu hỏi đào sâu:** Vì sao Zustand không cần Provider mà Redux cần? Zustand persist khác Redux-persist thế nào?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 154: Context có thay Redux được không?
@@ -256,6 +268,9 @@ const useCart = create<CartState>(...);
 **Trade-off:** Context đơn giản, không thêm lib, nhưng với state đổi nhiều sẽ **lag**. Đo bằng Profiler: nếu Context làm 50 component re-render mỗi lần `setItems`, phải đổi.
 
 **Câu hỏi đào sâu:** Vì sao `useContext` không có selector như `useSelector`? Làm sao tối ưu Context để không re-render thừa (tách context, memo)?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -321,6 +336,9 @@ function CartDrawer() {
 
 **Câu hỏi đào sâu:** Vì sao không nên lưu server state trong Redux? Cart là server hay client state?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 156: TanStack Query là gì? useQuery và useMutation
@@ -380,6 +398,9 @@ function Profile() { const { data } = useQuery({ queryKey: ['user'], queryFn: fe
 
 **Câu hỏi đào sâu:** `queryKey` vì sao phải là mảng? `useQuery` khác `useMutation` thế nào về cache?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 157: Cache Invalidation - khi nào invalidate?
@@ -437,6 +458,9 @@ function logout() {
 
 **Câu hỏi đào sâu:** `invalidateQueries` khác `refetchQueries` khác `setQueryData` thế nào? Khi nào dùng `polling` vs `focus refetch`?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 158: staleTime vs gcTime (cacheTime) - chi tiết
@@ -491,6 +515,9 @@ useQuery({
 **Trade-off:** `staleTime` lớn giảm request nhưng data có thể cũ, `gcTime` lớn giữ cache nhưng tốn memory. Với list product, `staleTime: 60s` cân bằng. Với `user`, `staleTime: 5m` cũng được.
 
 **Câu hỏi đào sâu:** Vì sao `staleTime: 0` là mặc định? Khi nào dùng `staleTime: Infinity`? `gcTime` vì sao đổi tên từ `cacheTime`?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -563,6 +590,9 @@ export const useCart = create<CartState>()(
 
 **Câu hỏi đào sâu:** Vì sao filter nên lưu ở URL thay vì Zustand? Cart là hybrid thì sync khi nào?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 160: State nào global, local, server? User/Cart/Product/Filter/Search/Order/Notification/UI
@@ -625,4 +655,5 @@ const { isCartOpen, toggle } = useUI();
 
 **Câu hỏi đào sâu:** Vì sao cart lại hybrid mà không pure server? Khi nào filter nên ở Zustand thay vì URL?
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---

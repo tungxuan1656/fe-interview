@@ -35,6 +35,9 @@
 - [Câu 29: Declaration Merging và Module Augmentation](#câu-29-declaration-merging-và-module-augmentation)
 - [Câu 30: Tối ưu hiệu năng TypeScript trong Monorepo lớn](#câu-30-tối-ưu-hiệu-năng-typescript-trong-monorepo-lớn)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 1: var / let / const, Hoisting và Temporal Dead Zone (TDZ)
@@ -70,6 +73,9 @@ for (let i = 0; i < 3; i++) setTimeout(() => console.log(i), 0); // 0 1 2
 **Lỗi thường gặp:** Dùng `var` trong if/for nghĩ là block-scope; nhầm `const` là immutable hoàn toàn; không hiểu TDZ nên để `typeof` trước khai báo cũng lỗi.
 
 **Câu hỏi đào sâu:** `typeof` với biến chưa khai báo vs biến trong TDZ khác gì? Vì sao `let` trong for-loop lại tạo closure đúng?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -110,6 +116,9 @@ function memoize(fn) {
 **Lỗi thường gặp:** Vòng lặp `var` + closure, stale closure trong `useEffect`/`setTimeout`, tạo closure trong loop render gây tạo function mới liên tục ảnh hưởng performance.
 
 **Câu hỏi đào sâu:** Closure và prototype khác nhau thế nào về lưu state? Làm sao debug memory leak do closure bằng Chrome DevTools?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -152,6 +161,9 @@ Thứ tự ưu tiên: `new` > `bind` > `implicit` > `default`. `bind` tạo "har
 
 **Câu hỏi đào sâu:** Vì sao React class component ngày xưa phải `this.handleClick = this.handleClick.bind(this)`? `this` trong event handler của DOM khác gì?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 4: Prototype, Prototype Chain và Kế thừa
@@ -189,6 +201,9 @@ Cơ chế `instanceof` chỉ kiểm `prototype` có nằm trên chain không. `h
 **Lỗi thường gặp:** Gán `Child.prototype = Parent.prototype` (làm 2 class share chung prototype), quên `Child.prototype.constructor`, hoặc method arrow trong prototype (không có prototype riêng).
 
 **Câu hỏi đào sâu:** `Object.create(null)` khác `{}` thế nào? Vì sao `Array.prototype.map` lại không enumerable?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -229,6 +244,9 @@ Starvation: nếu microtask tạo thêm microtask liên tục, macrotask (như r
 
 **Câu hỏi đào sâu:** Vì sao `Promise.then` luôn async dù Promise đã resolve? `requestAnimationFrame` nằm ở đâu trong loop? Node vs Browser Event Loop khác gì?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 6: Promise, async/await và xử lý lỗi bất đồng bộ
@@ -268,6 +286,9 @@ const first = await Promise.race([fetchA(), timeout(3000)]); // timeout pattern
 **Lỗi thường gặp:** Quên `return` trong `.then`, không `catch` dẫn tới `unhandledrejection`, dùng `await` trong loop không cần thiết, quên `Promise` không cancel được (cần AbortController).
 
 **Câu hỏi đào sâu:** Promise có cancel được không? Làm sao implement `Promise.withResolvers()`? Vì sao `await` trong `Array.forEach` không hoạt động như mong đợi?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -315,6 +336,9 @@ Generator còn có `yield*` để delegate, `return`/`throw` để điều khi�
 
 **Câu hỏi đào sâu:** Làm sao implement `async/await` bằng generator + Promise? `for await...of` hoạt động thế nào?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 8: Currying và Partial Application
@@ -361,6 +385,9 @@ Lodash `_.curry` và `_.partial` đã tối ưu placeholder (`_`). Trong FP, Ram
 **Lỗi thường gặp:** Curry hàm có `this` mà mất binding, không xử lý `fn.length` khi hàm có default param (length bị giảm).
 
 **Câu hỏi đào sâu:** Curry và partial khác nhau thế nào? Làm sao curry function có rest param?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -422,6 +449,9 @@ function useDebounce(value, delay = 300) {
 
 **Câu hỏi đào sâu:** Implement debounce có `cancel` và `flush` như lodash? Khi nào dùng `requestAnimationFrame` thay throttle?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 10: Shallow Copy vs Deep Copy
@@ -462,6 +492,9 @@ Trong React/Redux, immutability yêu cầu shallow copy ở mỗi level thay đ�
 
 **Câu hỏi đào sâu:** Vì sao `structuredClone` không clone function? Immer hoạt động thế nào để tối ưu copy?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 11: == vs ===, Coercion và Object.is
@@ -495,6 +528,9 @@ Trong React, `Object.is` được dùng để so sánh dependency của hooks (`
 **Lỗi thường gặp:** Dùng `==` vô tội vạ, so sánh object bằng `==` (chỉ so reference), check `if (x == false)` thay vì `!x`.
 
 **Câu hỏi đào sâu:** Vì sao React chọn `Object.is` thay vì `===` cho hook deps? Khi nào `==` hữu ích thật sự?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -545,6 +581,9 @@ class Comp {
 
 **Câu hỏi đào sâu:** Implement `bind` hỗ trợ `new` đúng spec? Vì sao `bind` chậm hơn closure trong micro-benchmark?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 13: Event Bubbling, Capturing và Delegation
@@ -580,6 +619,9 @@ Trong React, Synthetic Event (trước React 17) delegate lên `document`, từ 
 **Lỗi thường gặp:** Gắn listener cho từng item thay vì delegate, nhầm `preventDefault` với `stopPropagation`, quên `removeEventListener` phải cùng `capture` flag.
 
 **Câu hỏi đào sâu:** Vì sao React 17 đổi delegation từ document sang root? Event nào không bubble?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -621,6 +663,9 @@ Debug bằng Chrome DevTools Memory tab: Heap snapshot, Allocation timeline, tì
 **Lỗi thường gặp:** SetInterval trong useEffect không cleanup, closure trong debounce giữ component instance, cache Map không giới hạn.
 
 **Câu hỏi đào sâu:** Mark-and-Sweep khác Reference Counting thế nào? Vì sao circular reference không còn là vấn đề?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -665,6 +710,9 @@ Interop: `import cjs from './cjs'` sẽ lấy `module.exports` làm default. Dua
 
 **Câu hỏi đào sâu:** Vì sao ESM tree-shakable còn CJS không? `sideEffects` ảnh hưởng thế nào?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 16: Proxy vs Object.defineProperty
@@ -706,6 +754,9 @@ state.newProp = 1; // vẫn log - Proxy bắt được
 **Lỗi thường gặp:** So sánh `proxy === target` ra false, quên dùng `Reflect`, Proxy không deep tự động (phải recursively proxy).
 
 **Câu hỏi đào sâu:** Vì sao Vue 3 vẫn cần `reactive` deep proxy? Proxy có performance penalty thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -752,6 +803,9 @@ function traverse(obj) {
 **Lỗi thường gặp:** Dùng Symbol làm key rồi `JSON.stringify` mất, mix BigInt và Number, nghĩ WeakMap có `clear`/`size`.
 
 **Câu hỏi đào sâu:** Khi nào dùng `Symbol.for` vs `Symbol()`? Làm sao serialize BigInt qua JSON?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -809,6 +863,9 @@ class AppError extends Error {
 
 **Câu hỏi đào sâu:** `unhandledrejection` vs `rejectionhandled` khác gì? Vì sao Error Boundary không bắt được async error?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 19: any vs unknown vs never vs void
@@ -850,6 +907,9 @@ function log(msg: string): void { console.log(msg); }
 
 **Câu hỏi đào sâu:** Vì sao `unknown` an toàn hơn `any`? Khi nào `never` xuất hiện trong conditional type?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 20: type vs interface
@@ -888,6 +948,9 @@ Khuyến nghị team: dùng `interface` cho object shape public, `type` cho unio
 **Lỗi thường gặp:** Dùng `type` để extend interface bằng `&` tạo intersection khổng lồ chậm, hoặc lạm dụng merging gây conflict.
 
 **Câu hỏi đào sâu:** Khi nào nên dùng `interface` để tận dụng declaration merging? `type` có thể implement bởi class không?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -937,6 +1000,9 @@ Variance: `T extends U` không phải lúc nào cũng intuititive với function
 **Lỗi thường gặp:** Đặt `any` trong constraint, quên `extends keyof`, generic không infer được phải specify thủ công.
 
 **Câu hỏi đào sâu:** `T extends string` vs `T = string` khác gì? Làm sao constraint generic phải là key của object khác?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -989,6 +1055,9 @@ Biết implement giúp hiểu `infer`, `never` distribution, và viết utility 
 
 **Câu hỏi đào sâu:** Implement `DeepReadonly`? Vì sao `Exclude` dùng `never` để filter?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 23: Conditional Types, infer và Distributive
@@ -1031,6 +1100,9 @@ type F = Flatten<number[][][]>; // number
 **Lỗi thường gặp:** Quên distributive làm `Exclude<string|number, string>` ra `never` đúng nhưng `Exclude` bọc sai ra sai; `infer` không đặt đúng vị trí.
 
 **Câu hỏi đào sâu:** Làm sao tắt distributive? `infer` có thể infer nhiều type cùng lúc không?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -1077,6 +1149,9 @@ Dùng `as` trong mapped để remap key (key remapping, TS 4.1+).
 
 **Câu hỏi đào sâu:** Làm sao tạo type `SnakeToCamel` bằng template literal + recursion?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 25: Strict Mode và strictNullChecks
@@ -1122,6 +1197,9 @@ Trong team Senior, luôn bật `strict: true`, chấp nhận fix nhiều lỗi b
 
 **Câu hỏi đào sâu:** Vì sao `strictNullChecks` quan trọng nhất? `!` assertion khi nào chấp nhận được?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 26: Enum vs Union Type vs const assertion
@@ -1163,6 +1241,9 @@ type StatusFromConst = typeof StatusConst[keyof typeof StatusConst]; // "pending
 **Lỗi thường gặp:** Numeric enum cho phép giá trị ngoài enum, `const enum` bị xóa khi isolatedModules, so sánh enum với string literal sai.
 
 **Câu hỏi đào sâu:** `const enum` khác `enum` thường thế nào? Vì sao community khuyên tránh enum?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -1215,6 +1296,9 @@ Decorator thực chất là higher-order function, thứ tự: `@f @g class C` -
 **Lỗi thường gặp:** Quên enable `experimentalDecorators` + `emitDecoratorMetadata`, nhầm thứ tự decorator, dùng decorator trên arrow property (không hoạt động như method).
 
 **Câu hỏi đào sâu:** Legacy vs new decorator khác gì? `reflect-metadata` hoạt động thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -1274,6 +1358,9 @@ function area(s: Shape) {
 
 **Câu hỏi đào sâu:** `is` vs `asserts` khác gì? Làm sao viết guard cho array `filter` để loại `null`?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 29: Declaration Merging và Module Augmentation
@@ -1325,6 +1412,9 @@ Cần `declare module "xxx"` khớp với module name, và file phải là modul
 
 **Câu hỏi đào sâu:** `declare global` vs `declare module` khác gì? Làm sao augment type của third-party mà không sửa node_modules?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 30: Tối ưu hiệu năng TypeScript trong Monorepo lớn
@@ -1371,4 +1461,5 @@ Trong CI, cache `.tsbuildinfo`, dùng `nx` hoặc `turborepo` để remote cache
 
 **Câu hỏi đào sâu:** `tsc -b` khác `tsc` thường thế nào? Làm sao phát hiện type nào làm chậm nhất?
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---

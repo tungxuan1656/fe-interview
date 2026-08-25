@@ -25,6 +25,9 @@
 - [Câu 49: Quy tắc Hooks (Rules of Hooks)](#câu-49-quy-tắc-hooks-rules-of-hooks)
 - [Câu 50: Hydration mismatch và lỗi key phổ biến](#câu-50-hydration-mismatch-và-lỗi-key-phổ-biến)
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 31: React render là gì? Khi nào component re-render?
@@ -63,6 +66,9 @@ Lưu ý: `setState` với giá trị `Object.is` bằng cũ (React 18+) sẽ bai
 
 **Câu hỏi đào sâu:** Render phase có pure không? Vì sao không nên setState trong render? `setState` trong event handler vs trong `setTimeout` batching khác gì (React 17 vs 18)?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 32: Virtual DOM và Diffing Algorithm
@@ -90,6 +96,9 @@ VDOM còn cho phép render ra nhiều target: DOM (react-dom), Native (react-nat
 **Trade-off:** VDOM overhead tạo object mỗi render, với app update rất nhỏ (VD: 60fps animation) thì direct DOM hoặc Svelte (no VDOM) có thể nhanh hơn. Nhưng với app CRUD, VDOM đủ nhanh và DX tốt.
 
 **Câu hỏi đào sâu:** Vì sao React không dùng Proxy để track thay đổi như Vue? Diff O(n) vs O(n³) brute force khác gì?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -122,6 +131,9 @@ Rule: key phải **stable, predictable, unique**. Dùng `crypto.randomUUID()` kh
 **Trade-off:** Key tốt giúp diff O(n) và giữ state, nhưng key thay đổi liên tục gây mount/unmount tốn kém. Đừng dùng index nếu list có thể reorder/filter.
 
 **Câu hỏi đào sâu:** Vì sao `key` không có trong `props`? Khi nào dùng `key` để reset state thay vì `useEffect`?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -164,6 +176,9 @@ Trong thực tế, dùng controlled cho form nhỏ cần live validation, uncont
 **Trade-off:** Controlled re-render nhiều (mỗi ký tự), nhưng dễ test và đồng bộ. Uncontrolled ít re-render nhưng khó làm dynamic UI (VD: hiện lỗi ngay khi gõ).
 
 **Câu hỏi đào sâu:** Khi nào `value` vs `defaultValue`? Làm sao chuyển uncontrolled thành controlled mà không bị warning?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -210,6 +225,9 @@ const [data, setData] = React.useState(() => expensiveCalc(props.id));
 **Lỗi thường gặp:** Dùng `setCount(count + 1)` trong loop/timeout bị stale, nghĩ `setState` đồng bộ, mutate state trực tiếp.
 
 **Câu hỏi đào sâu:** React 17 vs 18 batching khác gì? Vì sao `flushSync` tồn tại?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -261,6 +279,9 @@ ESLint `react-hooks/exhaustive-deps` là bắt buộc - thiếu deps là bug, th
 
 **Câu hỏi đào sâu:** Vì sao `useEffect` cleanup chạy trước effect mới? Làm sao fetch mà không race condition khi `roomId` đổi nhanh?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 37: useEffect vs useLayoutEffect
@@ -296,6 +317,9 @@ Trong SSR, `useLayoutEffect` warning vì chạy trên server không có DOM - n�
 **Lỗi thường gặp:** Dùng `useLayoutEffect` cho fetch (block paint vô ích), quên SSR warning, đo DOM trong `useEffect` gây flicker.
 
 **Câu hỏi đào sâu:** Vì sao `useLayoutEffect` block paint? Khi nào dùng `useInsertionEffect` (cho CSS-in-JS)?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -342,6 +366,9 @@ const sorted = React.useMemo(() => items.slice().sort((a, b) => a.price - b.pric
 **Lỗi thường gặp:** Memo mọi thứ (over-memoization), deps sai (stale), memo cho primitive (vô nghĩa), nghĩ `useCallback` ngăn tạo function (vẫn tạo nhưng cache).
 
 **Câu hỏi đào sâu:** Khi nào `useMemo` không cần thiết? React Compiler thay đổi gì cho memo thủ công?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -394,6 +421,9 @@ function Parent() {
 
 **Câu hỏi đào sâu:** `useRef` vs `createRef` khác gì? Vì sao `ref` không gây re-render?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 40: Context API và vấn đề performance
@@ -435,6 +465,9 @@ Giải pháp Senior:
 **Trade-off:** Context đơn giản cho theme, locale, auth, nhưng không hợp cho high-frequency update (store). Đừng đặt state thay đổi liên tục vào Context.
 
 **Câu hỏi đào sâu:** Làm sao tránh re-render khi Context value là object? Khi nào nên thay Context bằng state lib?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -484,6 +517,9 @@ function useUser() { return React.useContext(UserContext); }
 
 **Câu hỏi đào sâu:** Khi nào composition đủ, khi nào cần Context? Làm sao test component dùng Context dễ hơn?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 42: Composition, Compound Components và Render Props
@@ -531,6 +567,9 @@ function useFetch(url) { /* ... */ return data; }
 
 **Câu hỏi đào sâu:** Khi nào dùng compound vs render props vs hook? Làm sao type compound components với TypeScript?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 43: Lifting State Up vs State Colocation
@@ -574,6 +613,9 @@ Kent C. Dodds mantra: "State colocation will make your app faster."
 **Trade-off:** Colocation giảm re-render nhưng nếu lift thiếu thì phải prop drilling hoặc Context. Cân bằng.
 
 **Câu hỏi đào sâu:** Làm sao quyết định state nên ở đâu? Colocation ảnh hưởng performance thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -621,6 +663,9 @@ function Counter() {
 **Trade-off:** Redux mạnh cho predictability và DevTools, nhưng verbose. Zustand nhẹ nhất. Jotai granular nhất nhưng mental model khác. Recoil hiện ít được khuyên dùng.
 
 **Câu hỏi đào sâu:** Vì sao Zustand không cần Provider? Atomic model giải quyết re-render thế nào?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -680,6 +725,9 @@ const store = configureStore({
 
 **Câu hỏi đào sâu:** RTK Query vs React Query khác gì? Khi nào cần Saga thay Thunk?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 46: Xử lý form: Controlled vs React Hook Form
@@ -737,6 +785,9 @@ RHF còn hỗ trợ `Controller` cho UI lib controlled (MUI, AntD), `useFieldArr
 
 **Câu hỏi đào sâu:** Vì sao RHF nhanh hơn controlled? `Controller` dùng khi nào?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 47: Synthetic Event trong React
@@ -780,6 +831,9 @@ function Parent() {
 **Lỗi thường gặp:** Nghĩ `e.target` luôn là element gắn handler (thực ra là `e.currentTarget`), quên `stopPropagation` không chặn native.
 
 **Câu hỏi đào sâu:** Event pooling là gì và vì sao bỏ? React 17 delegate lên root thay vì document để làm gì?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -826,6 +880,9 @@ function App() {
 **Lỗi thường gặp:** Quên Fragment không nhận prop ngoài `key`, Portal không tự xử lý z-index/focus, tắt StrictMode để tránh double log mà che bug.
 
 **Câu hỏi đào sâu:** Portal event bubbling theo React tree hay DOM tree? StrictMode double-invoke bắt lỗi gì?
+
+
+[↑ Quay lại Mục lục](#mục-lục)
 
 ---
 
@@ -881,6 +938,9 @@ ESLint `eslint-plugin-react-hooks` enforce tự động. React Compiler sẽ n�
 
 **Câu hỏi đào sâu:** Vì sao React lưu hooks theo thứ tự chứ không theo tên? Điều gì xảy ra nếu vi phạm?
 
+
+[↑ Quay lại Mục lục](#mục-lục)
+
 ---
 
 ### Câu 50: Hydration mismatch và lỗi key phổ biến
@@ -924,4 +984,5 @@ Debug hydration: `onRecoverableError` trong `hydrateRoot`, check `suppressHydrat
 
 **Câu hỏi đào sâu:** Hydration mismatch ảnh hưởng SEO và performance thế nào? Vì sao `key={Math.random()}` tệ hơn không có key?
 
+[↑ Quay lại Mục lục](#mục-lục)
 ---
