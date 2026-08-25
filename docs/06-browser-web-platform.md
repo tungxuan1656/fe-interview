@@ -244,8 +244,12 @@ Lưu ý: `transform` trên ancestor sẽ **phá fixed** - `fixed` sẽ fixed the
 <div style="transform: translateZ(0)">
   <div style="position: fixed; top: 0">Broken fixed</div>
 </div>
-// ✅
-<div style="will-change: transform"> {/* will-change không tạo containing block cho fixed như transform */}
+// ❌ cũng hỏng - will-change: transform cũng tạo containing block y hệt transform (khớp Câu 107)
+<div style="will-change: transform">
+  <div style="position: fixed; top: 0">Broken fixed (y hệt transform)</div>
+</div>
+// ✅ đúng - tránh transform/will-change trên ancestor, đặt fixed ở body trực tiếp
+<div>
   <div style="position: fixed; top: 0">OK</div>
 </div>
 ```

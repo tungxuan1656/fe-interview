@@ -138,7 +138,7 @@ Arrow function **không có `this` riêng**, nó lexical `this` từ scope bao q
 const obj = {
   name: 'A',
   regular() { console.log(this.name); },
-  arrow: () => console_quick(this?.name) // this là window/undefined, không phải obj
+  arrow: () => console.log(this?.name) // this là window/undefined, không phải obj
 };
 obj.regular(); // 'A' (implicit)
 

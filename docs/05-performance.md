@@ -133,7 +133,7 @@ Core Web Vitals là 3 chỉ số Google dùng để xếp hạng SEO và UX, đo
 - **INP (Interaction to Next Paint)**: từ khi user tương tác (click, key) tới khi **frame tiếp theo paint**, đo **độ trễ tương tác tồi nhất** (p98 của tương tác). Thay FID từ 3/2024. Tốt < 200ms, tệ > 500ms. Đo **interactivity**.
 - **CLS (Cumulative Layout Shift)**: tổng điểm **dịch layout bất ngờ** trong vòng đời trang. Đo **visual stability**. Tốt < 0.1, tệ > 0.25.
 
-Ngoài ra còn **TTFB, FCP, TTFB** nhưng không phải Core.
+Ngoài ra còn **TTFB, FCP, TBT (Total Blocking Time)** nhưng không phải Core.
 
 ```typescript
 // Ngưỡng
