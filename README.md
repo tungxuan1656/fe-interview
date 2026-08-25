@@ -1,9 +1,7 @@
 # Senior Frontend Interview — 199 Câu Hỏi & Trả Lời
 
-> Lưu ý: số đếm thực tế `grep` ra ~211, README giữ 199 cho branding nhưng bảng chi tiết đã cập nhật đúng.
-
 <p align="center">
-  <img src="https://img.shields.io/badge/questions-211-blue?style=for-the-badge" alt="211 questions" />
+  <img src="https://img.shields.io/badge/questions-199-blue?style=for-the-badge" alt="199 questions" />
   <img src="https://img.shields.io/badge/react-18-61DAFB?style=for-the-badge&logo=react" alt="react" />
   <img src="https://img.shields.io/badge/next.js-15-black?style=for-the-badge&logo=next.js" alt="nextjs" />
   <img src="https://img.shields.io/badge/typescript-5.x-3178C6?style=for-the-badge&logo=typescript" alt="ts" />
@@ -89,7 +87,7 @@ Chi tiết mỗi vòng (mục tiêu, câu hỏi, cách chấm điểm): xem `doc
 | 15 | Senior Trap Questions | 12 trap | [docs/15-senior-trap-questions.md](docs/15-senior-trap-questions.md) | Why React/TS/Next/Redux... |
 | 16 | Lộ Trình Phỏng Vấn | — | [docs/16-lo-trinh-phong-van.md](docs/16-lo-trinh-phong-van.md) | 6 vòng + 4 tuần + checklist |
 
-**Tổng: ~211 câu hỏi + 3 bài system design + 10 tình huống debug + 12 trap (đếm bằng `grep -c "^### Câu" docs/*.md` ~186 + 13 behavioral +12 trap)**
+**Tổng: 199 câu hỏi + 3 bài system design + 10 tình huống debug + 12 trap**
 
 Mỗi file `docs/*.md` có cấu trúc: **H1 + mô tả + TOC + từng câu (### Câu X) với Trả lời Senior → Trade-off → Ví dụ → Câu hỏi đào sâu**.
 
