@@ -123,7 +123,7 @@ React 18 là bản nền cho Concurrent:
 3.  **Transitions (`useTransition`, `startTransition`):** đánh dấu update không khẩn (non-urgent), để React ưu tiên urgent update (typing, click).
 4.  **Suspense cho SSR:** `Suspense` hỗ trợ streaming SSR, selective hydration.
 5.  **New hooks:** `useId`, `useDeferredValue`, `useSyncExternalStore`, `useInsertionEffect`.
-6.  **SuspenseList** (ít dùng) và cải thiện `hydrateRoot`.
+6.  **SuspenseList** (experimental, đã loại bỏ khỏi stable 18, chỉ còn trong experimental) - ít dùng, thay bằng streaming + Suspense lồng nhau. Cải thiện `hydrateRoot`.
 
 ```jsx
 // Automatic Batching - React 18 batch cả async
@@ -158,11 +158,11 @@ Migration: thay `ReactDOM.render` bằng `createRoot`, check `findDOMNode` depre
 ### Câu 54: React 19 - Actions, `use` và React Compiler
 
 **Trả lời Senior:**
-React 19 (stable 2024) tập trung vào **data fetching + mutations + compiler**:
+React 19 (stable Dec 2024, Compiler vẫn beta qua eslint-plugin-react-compiler) tập trung vào **data fetching + mutations + compiler**:
 
 - **Actions (`useTransition` + async):** `formAction`, `useActionState` (trước là `useFormState`), `useFormStatus` để xử lý form/mutation với pending, optimistic update, error handling tích hợp. Server Actions (Next.js) là 1 dạng action.
-- **`use` API:** đọc Promise hoặc Context **trong render** (không chỉ top-level), cho phép `if (cond) use(...)` - linh hoạt hơn hooks. Dùng với Suspense.
-- **React Compiler (React Forget):** auto-memoization - tự động `useMemo`/`useCallback`/`memo` nên không cần memo thủ công nữa, giảm 90% memo code. Hiện opt-in.
+- **`use` API:** đọc Promise hoặc Context **trong render** (không chỉ top-level), cho phép `if (cond) use(...)` - linh hoạt hơn hooks. Dùng với Suspense (chỉ trong render có Suspense boundary).
+- **React Compiler (React Forget):** auto-memoization - tự động `useMemo`/`useCallback`/`memo` nên giảm ~50-70% memo thủ công (ước tính), hiện vẫn opt-in beta trong 2026, chưa bật mặc định. Về lâu dài memo thủ công sẽ dần ít cần thiết nhưng chưa obsolete hoàn toàn.
 - **Document Metadata, Asset Loading, `ref` cleanup:** `<title>` trong component, `ref` as prop (không cần `forwardRef`), `useDeferredValue` initial value.
 - **`useOptimistic`:** optimistic UI cho mutation.
 
@@ -192,10 +192,10 @@ function Comments({ commentsPromise }) {
   const comments = use(commentsPromise); // suspend tới khi resolve
   return comments.map(c => <div key={c.id}>{c.text}</div>);
 }
-// Có thể condition
+// Có thể condition - chỉ trong render có Suspense boundary
 function Maybe({ shouldFetch, promise }) {
   if (shouldFetch) {
-    const data = use(promise); // ok, use không bị rules of hooks hạn chế như hook thường
+    const data = use(promise); // ok, use không bị rules of hooks hạn chế như hook thường, nhưng chỉ trong render có Suspense boundary
     return <div>{data}</div>;
   }
   return null;

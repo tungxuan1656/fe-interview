@@ -273,7 +273,7 @@ async function processLargeArray(array) {
 ### Câu 91: CLS (Cumulative Layout Shift) chi tiết
 
 **Trả lời Senior:**
-CLS là **tổng điểm dịch layout bất ngờ** mà không do user tương tác. Mỗi shift tính `score = impactFraction * distanceFraction`. `impactFraction` là % viewport bị ảnh hưởng, `distanceFraction` là khoảng dịch lớn nhất / viewport. Tổng CLS < 0.1 là tốt, > 0.25 là tệ.
+CLS là **tổng điểm dịch layout bất ngờ** mà không do user tương tác. Mỗi shift tính `score = impactFraction * distanceFraction`. `impactFraction` là % viewport bị ảnh hưởng, `distanceFraction` là khoảng dịch lớn nhất / viewport. Tổng CLS < 0.1 là tốt, > 0.25 là tệ. Lưu ý cập nhật 2025: Brave/CrUX hiện đo CLS đến sự kiện pagehidden (thay vì kéo dài vô hạn), nhưng ngưỡng 0.1 vẫn giữ nguyên.
 
 Nguyên nhân kinh điển: **ảnh/iframe không có size** (load xong đẩy content), **font swap** (FOIT → FOUT làm text reflow), **ads/banner inject** trên đầu, **dynamic content** (thêm DOM mà không reserve space), **animation không dùng transform**.
 
@@ -724,7 +724,7 @@ ETag: "abc123"
 
 # HTML - không cache hoặc revalidate
 GET /index.html
-Cache-Control: no-cache
+Cache-Control: no-cache # no-cache vẫn lưu nhưng phải revalidate (304), no-store mới không lưu gì. Cho HTML nên dùng no-cache hoặc must-revalidate, không dùng no-store nếu muốn 304.
 # hoặc
 Cache-Control: public, max-age=0, must-revalidate
 ETag: "html-v1"

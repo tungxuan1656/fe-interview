@@ -198,7 +198,8 @@ Cơ chế `instanceof` chỉ kiểm `prototype` có nằm trên chain không. `h
 JS single-thread, concurrency nhờ Event Loop. Call Stack chạy sync code. Khi gặp async (setTimeout, Promise, fetch), Web API/DOM xử lý rồi đẩy callback vào Queue. Event Loop liên tục check: Stack rỗng thì ưu tiên **drain microtask queue** trước, rồi mới lấy 1 macrotask.
 
 - **Microtask:** `Promise.then/catch/finally`, `queueMicrotask`, `MutationObserver`, `process.nextTick` (Node, ưu tiên hơn cả Promise).
-- **Macrotask:** `setTimeout`, `setInterval`, `setImmediate` (Node), I/O, `MessageChannel`, `requestAnimationFrame` (trước paint).
+- **Macrotask:** `setTimeout`, `setInterval`, `setImmediate` (Node), I/O, `MessageChannel`.
+- **rAF:** `requestAnimationFrame` không phải macrotask, chạy ở rendering phase trước paint, sau microtask/macrotask.
 
 ```javascript
 console.log('1');
@@ -450,6 +451,7 @@ function deepClone(obj, seen = new WeakMap()) {
   for (const k in obj) clone[k] = deepClone(obj[k], seen);
   return clone;
 }
+// Lưu ý: đây là demo đơn giản - bỏ qua Symbol, non-enumerable, Date/Map/Set, RegExp. Production dùng structuredClone cho các case đó, nhưng structuredClone cũng không clone function/DOM node/prototype.
 ```
 
 Trong React/Redux, immutability yêu cầu shallow copy ở mỗi level thay đổi để reference check (`===`) phát hiện thay đổi. Deep clone toàn bộ state mỗi lần là lãng phí.
@@ -649,8 +651,8 @@ console.log(count); // 1
 inc();
 console.log(count); // 2 - live!
 
-// CJS thì copy
-// cjs: exports.count = 1; main require -> count là copy, không live
+// CJS: primitive thì copy snapshot, object thì reference cùng object nhưng re-assign exports không live
+// Với object: module.exports = {count:1}; require -> reference cùng object; nhưng gán lại module.exports = {count:2} thì require cũ không thấy
 ```
 
 Tree-shaking dựa vào static analysis của ESM: bundler (Rollup, esbuild, Webpack) mark export không dùng thì drop. Cần `sideEffects: false` trong package.json và tránh dynamic `import()` lung tung.
@@ -967,7 +969,7 @@ type MyExclude<T, U> = T extends U ? never : T;
 type MyExtract<T, U> = T extends U ? T : never;
 
 // NonNullable
-type MyNonNullable<T> = T & {};
+type MyNonNullable<T> = T extends null | undefined ? never : T; // chuẩn lib, shorthand T & {} cũng hoạt động vì {} loại null/undefined nhưng che nghĩa
 
 // ReturnType
 type MyReturnType<T extends (...args: any) => any> = T extends (...args: any) => infer R ? R : any;

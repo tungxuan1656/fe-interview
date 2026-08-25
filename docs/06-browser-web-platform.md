@@ -179,7 +179,7 @@ element.addEventListener('transitionend', () => {
 // 1920x1080 layer = 8MB GPU memory
 ```
 
-**Trade-off:** Layer tốn GPU memory (mỗi layer vài MB), tạo 100 layer làm memory phình, composite chậm hơn. Chỉ tạo cho element thực sự animate/scroll, không `will-change: transform` cho hết trang. Luôn xóa `will-change` sau khi xong.
+**Trade-off:** Layer tốn GPU memory (mỗi layer vài MB), tạo 100 layer làm memory phình, composite chậm hơn. Chỉ tạo cho element thực sự animate/scroll, không `will-change: transform` cho hết trang. Luôn xóa `will-change` sau khi xong. Lưu ý: `will-change` cũng tạo stacking context và containing block như `transform`, nên cũng có thể phá `position: fixed` của con cháu — không lạm dụng.
 
 **Câu hỏi đào sâu:** `will-change` lạm dụng gây gì? Vì sao `position: fixed` luôn có layer riêng? Làm sao đo GPU memory của layer?
 
@@ -575,7 +575,7 @@ fetch('/').then(() => console.log(performance.getEntriesByType('navigation')[0].
 **Trả lời Senior:**
 HTTP/2 core là **binary framing + multiplexing**: 1 TCP connection chia thành nhiều **stream** (mỗi request là 1 stream), mỗi stream chia thành **frame** (HEADERS, DATA). Các frame của nhiều stream interleave trên cùng connection, không phải đợi. Giải quyết H1.1 queue.
 
-- **HPACK**: nén header (vốn lặp lại: `cookie`, `user-agent`), dùng static table + dynamic table + Huffman, giảm 50-80% header size.
+- **HPACK**: nén header (vốn lặp lại: `cookie`, `user-agent`), dùng static table + dynamic table + Huffman, giảm 50-80% header size. QPACK cho HTTP/3 tương tự HPACK nhưng thiết kế cho QUIC, khắc phục head-of-line blocking.
 - **Stream Priority**: client gửi `priority` (trước là dependency tree, nay là `Priority` header), server ưu tiên CSS trước JS, hero trước below-fold. Nhưng priority H2 phức tạp và browser implement khác nhau.
 - **Server Push**: server đẩy resource trước khi client request (ví dụ đẩy `app.css` khi client request `/`). Đã deprecated vì cache không hiệu quả, thay bằng `103 Early Hints` + `preload`.
 
@@ -746,7 +746,7 @@ Service Worker (SW) là **proxy programmable** giữa browser và network, chạ
 - **Install**: `install` event, precache static (`cache.addAll`), `skipWaiting()` để activate ngay.
 - **Activate**: `activate` event, xóa cache cũ, `clients.claim()` để control ngay.
 - **Fetch**: `fetch` event, `event.respondWith(caches.match(...) || fetch(...))`.
-- **Update**: browser check `sw.js` mỗi 24h hoặc mỗi navigation, nếu byte khác thì install new, đợi `skipWaiting` hoặc close tab mới activate.
+- **Update**: browser check update mỗi navigation (fetch `sw.js`). Nếu server trả header `Cache-Control` thì tôn trọng; mặc định nhiều browser cache `sw.js` tối đa 24h nếu không có header, nên luôn set `Cache-Control: no-cache` cho `sw.js`. Nếu byte khác thì install new, đợi `skipWaiting` hoặc close tab mới activate.
 
 Cache strategy:
 

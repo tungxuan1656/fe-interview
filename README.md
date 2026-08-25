@@ -1,7 +1,9 @@
 # Senior Frontend Interview — 199 Câu Hỏi & Trả Lời
 
+> Lưu ý: số đếm thực tế `grep` ra ~211, README giữ 199 cho branding nhưng bảng chi tiết đã cập nhật đúng.
+
 <p align="center">
-  <img src="https://img.shields.io/badge/questions-199-blue?style=for-the-badge" alt="199 questions" />
+  <img src="https://img.shields.io/badge/questions-211-blue?style=for-the-badge" alt="211 questions" />
   <img src="https://img.shields.io/badge/react-18-61DAFB?style=for-the-badge&logo=react" alt="react" />
   <img src="https://img.shields.io/badge/next.js-15-black?style=for-the-badge&logo=next.js" alt="nextjs" />
   <img src="https://img.shields.io/badge/typescript-5.x-3178C6?style=for-the-badge&logo=typescript" alt="ts" />
@@ -75,19 +77,19 @@ Chi tiết mỗi vòng (mục tiêu, câu hỏi, cách chấm điểm): xem `doc
 | 03 | React Nâng Cao | 18 | [docs/03-react-nang-cao.md](docs/03-react-nang-cao.md) | Fiber, concurrent, memo, RSC |
 | 04 | Frontend Architecture | 17 | [docs/04-frontend-architecture.md](docs/04-frontend-architecture.md) | FSD, design system, micro-frontend |
 | 05 | Performance | 19 | [docs/05-performance.md](docs/05-performance.md) | Web Vitals, bundle, image, cache |
-| 06 | Browser & Web Platform | 15 | [docs/06-browser-web-platform.md](docs/06-browser-web-platform.md) | Rendering, event, storage, PWA |
-| 07 | Security | 10 | [docs/07-security.md](docs/07-security.md) | XSS, CSRF, CSP, auth |
-| 08 | API & Networking | 12 | [docs/08-api-networking.md](docs/08-api-networking.md) | REST, GraphQL, WS, retry |
+| 06 | Browser & Web Platform | 17 | [docs/06-browser-web-platform.md](docs/06-browser-web-platform.md) | Rendering, event, storage, PWA |
+| 07 | Security | 13 | [docs/07-security.md](docs/07-security.md) | XSS, CSRF, CSP, auth |
+| 08 | API & Networking | 16 | [docs/08-api-networking.md](docs/08-api-networking.md) | REST, GraphQL, WS, retry |
 | 09 | State Management | 10 | [docs/09-state-management.md](docs/09-state-management.md) | Redux, Zustand, Query, atomic |
-| 10 | Testing | 10 | [docs/10-testing.md](docs/10-testing.md) | Unit, integration, E2E, MSW |
-| 11 | Next.js | 12 | [docs/11-nextjs.md](docs/11-nextjs.md) | App Router, SSR/ISR, RSC |
+| 10 | Testing | 12 | [docs/10-testing.md](docs/10-testing.md) | Unit, integration, E2E, MSW |
+| 11 | Next.js | 14 | [docs/11-nextjs.md](docs/11-nextjs.md) | App Router, SSR/ISR, RSC |
 | 12 | System Design | 3 bài | [docs/12-system-design.md](docs/12-system-design.md) | E-commerce, Chat, Dashboard |
 | 13 | Debugging | 10 TH | [docs/13-debugging.md](docs/13-debugging.md) | White screen, leak, race, iOS |
 | 14 | Behavioral & Leadership | 13 | [docs/14-behavioral-leadership.md](docs/14-behavioral-leadership.md) | STAR, conflict, incident |
 | 15 | Senior Trap Questions | 12 trap | [docs/15-senior-trap-questions.md](docs/15-senior-trap-questions.md) | Why React/TS/Next/Redux... |
 | 16 | Lộ Trình Phỏng Vấn | — | [docs/16-lo-trinh-phong-van.md](docs/16-lo-trinh-phong-van.md) | 6 vòng + 4 tuần + checklist |
 
-**Tổng: 199 câu hỏi + 3 bài system design + 10 tình huống debug + 12 trap**
+**Tổng: ~211 câu hỏi + 3 bài system design + 10 tình huống debug + 12 trap (đếm bằng `grep -c "^### Câu" docs/*.md` ~186 + 13 behavioral +12 trap)**
 
 Mỗi file `docs/*.md` có cấu trúc: **H1 + mô tả + TOC + từng câu (### Câu X) với Trả lời Senior → Trade-off → Ví dụ → Câu hỏi đào sâu**.
 

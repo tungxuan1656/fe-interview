@@ -1,6 +1,6 @@
 # 16. Lộ Trình Phỏng Vấn - 6 Vòng & Kế Hoạch 4 Tuần
 
-> Nếu ôn theo **phỏng vấn thật**, đừng ôn dàn trải 199 câu. Hãy ôn theo **6 vòng** mà công ty Senior hay hỏi, với độ quan trọng ⭐ khác nhau. Chương này cho bạn **bản đồ 6 vòng + lộ trình 4 tuần cho background React/React Native + checklist tự đánh giá**.
+> Nếu ôn theo **phỏng vấn thật**, đừng ôn dàn trải 199 câu (~211 thực tế gồm 12 trap, xem README). Hãy ôn theo **6 vòng** mà công ty Senior hay hỏi, với độ quan trọng ⭐ khác nhau. Chương này cho bạn **bản đồ 6 vòng + lộ trình 4 tuần cho background React/React Native + checklist tự đánh giá**.
 
 ## Mục lục
 

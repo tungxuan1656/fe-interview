@@ -399,7 +399,7 @@ export const config = {
 **Trả lời Senior:**
 Next.js App Router có **4 tầng cache** (nhiều người chỉ biết 1):
 
-1.  **Request Memoization**: trong **1 request**, `fetch` cùng URL + options chỉ gọi 1 lần dù nhiều component gọi. Chỉ trong render, không persist. Tự động, không config.
+1.  **Request Memoization**: trong **1 request**, `fetch` cùng URL + options chỉ gọi 1 lần dù nhiều component gọi (chỉ dedupe GET, không cho POST/mutation). Chỉ trong render, không persist. Tự động, không config.
 2.  **Data Cache**: **persist** kết quả `fetch` giữa các request (trên server). Mặc định `fetch` là `force-cache` (SSG). Điều khiển bằng `cache: 'no-store'` hoặc `next: { revalidate: N }` hoặc `revalidateTag`. Lưu trên server, xóa khi revalidate.
 3.  **Full Route Cache**: cache **HTML + RSC payload** của route đã render (SSG). Khi Data Cache hit và route là static, Next trả HTML cache luôn, không render lại. Chỉ cho static route.
 4.  **Router Cache**: cache **trên client** (browser) - Next giữ RSC payload trong memory khi navigate (`Link` prefetch). `router.refresh()` xóa. Điều khiển bằng `export const dynamic = 'force-dynamic'` hoặc `Link prefetch={false}`.
@@ -627,7 +627,7 @@ export default async function ProductList() {
 'use client';
 import { use } from 'react'; // React 19 use()
 // Streaming với PPR (Next 15) - shell static + hole dynamic
-export const experimental_ppr = true;
+// Next 15+: cấu hình trong next.config.js: experimental: { ppr: 'incremental' } // không còn export const experimental_ppr
 ```
 
 ```
@@ -693,6 +693,7 @@ export default async function sitemap() {
     ...products.map(p => ({ url: `https://shop.example.com/products/${p.id}`, lastModified: p.updatedAt })),
   ];
 }
+// Lưu ý: sitemap limit 50k URL / 50MB theo spec, 100k phải chia sitemap/0.xml, sitemap/1.xml và sitemap index
 
 // app/robots.ts
 export default function robots() {

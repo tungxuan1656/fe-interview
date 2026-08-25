@@ -215,6 +215,8 @@ test('mock', () => {
 
 **Trade-off:** Jest ổn định, plugin nhiều, nhưng với dự án Vite/Next mới, Vitest là default vì **không config 2 lần** và nhanh. Migration Jest → Vitest thường chỉ đổi `jest.` thành `vi.` và alias.
 
+> Update 2025: Vitest 3.x + Vite 6, coverage v8/browserslist
+
 **Câu hỏi đào sâu:** Vì sao Vitest nhanh hơn Jest? Khi nào vẫn phải dùng Jest (React Native, legacy Babel)?
 
 ---

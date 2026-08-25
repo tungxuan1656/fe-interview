@@ -193,6 +193,8 @@ No SEO + app → CSR
 - **Trade-off:** **HTML dài** (class 200 ký tự), **học lại** (nhớ class), **khó override** khi cần CSS phức tạp (animation, `:has()`), **lock-in** (muốn bỏ Tailwind phải rewrite).
 - **Khi nào dùng:** Team mới, cần nhanh, design system chưa mature, app Tailwind-first.
 
+> Update 2025: Tailwind v4 engine mới (Oxide), không cần tailwind.config.js, `@import "tailwindcss"`, Vite plugin `@tailwindcss/vite`. Trade-off cũ vẫn đúng.
+
 ---
 
 ### Trap 9: Why NOT Tailwind? (Khi nào không dùng)

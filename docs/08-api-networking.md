@@ -964,7 +964,7 @@ X-RateLimit-Reset: 1714000000
 ```typescript
 // Frontend wrapper
 async function apiPost<T>(url: string, body: any, opts: { idempotent?: boolean } = {}) {
-  const headers: Record<string, string> = { 'Content-Type': ' application/json' };
+  const headers: Record<string, string> = { 'Content-Type': 'application/json' };
   if (opts.idempotent) headers['Idempotency-Key'] = crypto.randomUUID();
   const res = await fetch(url, { method: 'POST', headers, body: JSON.stringify(body) });
   if (res.status === 429) {
