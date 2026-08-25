@@ -7,13 +7,6 @@
   <img src="https://img.shields.io/badge/typescript-5.x-3178C6?style=for-the-badge&logo=typescript" alt="ts" />
 </p>
 
-<p align="center">
-  <img src="https://img.shields.io/github/stars/you/fe-interview-questions?style=social" alt="stars" />
-  <img src="https://img.shields.io/github/forks/you/fe-interview-questions?style=social" alt="forks" />
-  <img src="https://img.shields.io/badge/last%20update-Aug%202026-green" alt="last update" />
-  <img src="https://img.shields.io/badge/license-MIT-yellow" alt="license" />
-</p>
-
 > **Không chỉ ôn "React là gì" mà đào sâu kiến trúc, trade-off, performance, debugging, testing, security và ra quyết định như một Senior thực thụ.** Repo này tổng hợp 199 câu hỏi phỏng vấn Senior Frontend (React/Next.js/TypeScript) — mỗi câu trả lời ở mức **cơ chế → trade-off → ví dụ thực tế**, kèm system design, debugging và behavioral.
 
 ---
@@ -23,7 +16,8 @@
 - [Đối tượng & Cách dùng](#-đối-tượng--cách-dùng)
 - [6 Vòng phỏng vấn](#-6-vòng-phỏng-vấn)
 - [Tổng quan 16 chương](#-tổng-quan-16-chương)
-- [Tư duy Senior: trả lời trap](#-tư-duy-senior-trả-lời-trap)
+- [Senior Interview Training System](#-senior-interview-training-system)
+- [Tư duy Senior](#-tư-duy-senior)
 - [Lộ trình ôn 4 tuần](#-lộ-trình-ôn-4-tuần)
 - [Đóng góp](#-đóng-góp)
 - [Roadmap](#-roadmap)
@@ -40,36 +34,32 @@
 | Cách | Khi nào | Làm sao |
 |---|---|---|
 | **1. Checklist** | Ôn nhanh trước phỏng vấn 1-2 ngày | Mở bảng 16 chương, tick từng câu, chỉ đọc câu chưa vững |
-| **2. Mock Interview** | Luyện nói | Mỗi ngày bốc 5 câu ngẫu nhiên, trả lời bằng miệng 2' / câu, record lại |
-| **3. Đào sâu** | Học để giỏi thật | Đọc từng chương theo lộ trình 4 tuần, code lại ví dụ, vẽ lại system design |
+| **2. Mock Interview** | Luyện nói | Bốc câu hỏi, trả lời bằng miệng 2–3 phút, sau đó tự đặt follow-up |
+| **3. Đào sâu** | Học để giỏi thật | Đọc từng chương, code lại ví dụ, vẽ lại system design và luyện scenario |
 
-> 💡 Tips: Đừng đọc từ đầu đến cuối như sách giáo khoa. Hãy bắt đầu từ chương bạn **yếu nhất** (thường là Performance hoặc System Design).
+> 💡 Đừng chỉ đọc từ đầu đến cuối. Hãy chuyển từ **Knowledge → Engineering → Scenario → Production judgement**.
 
 ---
 
 ## 🎤 6 Vòng phỏng vấn
-
-Đây là cấu trúc phỏng vấn Senior thực tế tại các công ty lớn. Mỗi vòng có độ quan trọng khác nhau:
 
 | Vòng | Tên | Độ quan trọng | Trọng tâm | Docs liên quan |
 |---|---|---|---|---|
 | 1 | **JS / TypeScript** | ⭐⭐⭐⭐ | Closure, Event Loop, TS generics | `01` |
 | 2 | **React** | ⭐⭐⭐⭐⭐ | Fiber, hooks, concurrent, perf | `02`, `03` |
 | 3 | **Browser / Performance** | ⭐⭐⭐⭐⭐ | Core Web Vitals, cache, bundle, virtualization | `05`, `06` |
-| 4 | **Architecture / System Design** | ⭐⭐⭐⭐⭐ | FSD, state, API, micro-frontend, 3 bài lớn | `04`, `12` |
-| 5 | **Coding / Debugging** | ⭐⭐⭐⭐ | Live coding + 10 tình huống debug | `13` |
-| 6 | **Behavioral / Leadership** | ⭐⭐⭐⭐ | STAR, conflict, incident, mentor | `14`, `15` |
+| 4 | **Architecture / System Design** | ⭐⭐⭐⭐⭐ | FSD, state, API, micro-frontend, design | `04`, `12`, `19` |
+| 5 | **Coding / Debugging** | ⭐⭐⭐⭐ | Live coding + production incidents | `13`, `18` |
+| 6 | **Behavioral / Leadership** | ⭐⭐⭐⭐ | STAR, conflict, incident, mentor | `14`, `15`, `21` |
 
-> **Thứ tự ưu tiên ôn:** React (⭐⭐⭐⭐⭐) → Browser/Perf (⭐⭐⭐⭐⭐) → Architecture (⭐⭐⭐⭐⭐) → JS/TS (⭐⭐⭐⭐) → Coding/Debugging (⭐⭐⭐⭐) → Behavioral (⭐⭐⭐⭐)
-
-Chi tiết mỗi vòng (mục tiêu, câu hỏi, cách chấm điểm): xem `docs/16-lo-trinh-phong-van.md`.
+> **Thứ tự ưu tiên ôn:** React → Browser/Perf → Architecture → JS/TS → Coding/Debugging → Behavioral.
 
 ---
 
 ## 📖 Tổng quan 16 chương
 
 | STT | Chương | Số câu | Link | Trọng tâm |
-|---|---|---|---|---|
+|---|---|---:|---|---|
 | 01 | JavaScript & TypeScript | 30 | [docs/01-javascript-typescript.md](docs/01-javascript-typescript.md) | Closure, Event Loop, Promise, TS generics |
 | 02 | React Cơ Bản | 20 | [docs/02-react-co-ban.md](docs/02-react-co-ban.md) | JSX, hooks, lifecycle, state |
 | 03 | React Nâng Cao | 18 | [docs/03-react-nang-cao.md](docs/03-react-nang-cao.md) | Fiber, concurrent, memo, RSC |
@@ -84,64 +74,83 @@ Chi tiết mỗi vòng (mục tiêu, câu hỏi, cách chấm điểm): xem `doc
 | 12 | System Design | 3 bài | [docs/12-system-design.md](docs/12-system-design.md) | E-commerce, Chat, Dashboard |
 | 13 | Debugging | 10 TH | [docs/13-debugging.md](docs/13-debugging.md) | White screen, leak, race, iOS |
 | 14 | Behavioral & Leadership | 13 | [docs/14-behavioral-leadership.md](docs/14-behavioral-leadership.md) | STAR, conflict, incident |
-| 15 | Senior Trap Questions | 12 trap | [docs/15-senior-trap-questions.md](docs/15-senior-trap-questions.md) | Why React/TS/Next/Redux... |
+| 15 | Senior Trap Questions | 12 trap | [docs/15-senior-trap-questions.md](docs/15-senior-trap-questions.md) | Why React/TS/Next/Redux |
 | 16 | Lộ Trình Phỏng Vấn | — | [docs/16-lo-trinh-phong-van.md](docs/16-lo-trinh-phong-van.md) | 6 vòng + 4 tuần + checklist |
 
-**Tổng: 199 câu hỏi + 3 bài system design + 10 tình huống debug + 12 trap**
-
-Mỗi file `docs/*.md` có cấu trúc: **H1 + mô tả + TOC + từng câu (### Câu X) với Trả lời Senior → Trade-off → Ví dụ → Câu hỏi đào sâu**.
+**Tổng hiện tại: 199 câu hỏi + 3 system design + 10 debugging + 12 trap.**
 
 ---
 
-## 🧠 Tư duy Senior: trả lời trap
+## 🧠 Senior Interview Training System
 
-Điểm khác biệt lớn nhất giữa Junior và Senior không phải là biết nhiều hơn, mà là **trả lời bằng trade-off**.
+Knowledge base được mở rộng bằng 5 lớp luyện phỏng vấn:
 
-| Junior | Senior |
-|---|---|
-| "Dùng Redux vì nó tốt" | "Dùng Redux khi state global phức tạp + team lớn cần convention, nhưng trade-off là boilerplate; với app nhỏ thì Zustand + Query gọn hơn" |
-| "SSR luôn nhanh hơn" | "SSR giúp LCP nhanh nhưng TTFB chậm + hydration cost; chỉ SSR khi cần SEO + dynamic" |
-| "Tailwind là best" | "Tailwind giúp velocity nhưng HTML dài; khi cần CSS phức tạp hoặc theme runtime thì CSS Modules hợp hơn" |
+| Layer | Mục đích | Docs |
+|---|---|---|
+| **Interview Framework** | Know → Explain → Apply → Defend + rubric | [17](docs/17-interview-framework.md) |
+| **Production Scenarios** | Luyện incident, debugging và judgement | [18](docs/18-production-scenarios.md) |
+| **System Design Interview Mode** | Clarify → Design → Deep dive → Trade-off → Rollout | [19](docs/19-system-design-interview-mode.md) |
+| **Frontend Platform** | Monorepo, build, CI/CD, multi-tenant, release | [20](docs/20-frontend-platform-engineering.md) |
+| **Behavioral Story Builder** | Story bank + follow-up attack questions | [21](docs/21-behavioral-story-builder.md) |
 
-**Công thức Senior cho mọi câu "Why X?":**
+### Cách luyện một câu
 
-> **Tại sao dùng → Giá phải trả (trade-off) → Khi nào KHÔNG dùng**
+```text
+Question
+   ↓
+2–3 min verbal answer
+   ↓
+Why / Trade-off / When NOT to use
+   ↓
+Production scenario
+   ↓
+Follow-up attack
+   ↓
+Self-score: 0–4
+```
 
-Luyện 12 trap trong `docs/15-senior-trap-questions.md` để không bị bắt bài.
+### Cách luyện System Design
+
+**Không xem reference answer trước.** Hãy tự clarify requirements, đưa ra architecture, giải thích trade-off, failure modes và rollout. Sau đó mới đối chiếu `docs/12-system-design.md`.
+
+### Cách luyện Behavioral
+
+Không học thuộc STAR mẫu. Xây story từ trải nghiệm thật, sau đó luyện các câu hỏi đào sâu về decision, downside, outcome và lesson learned.
+
+---
+
+## 🧠 Tư duy Senior
+
+Công thức cơ bản:
+
+> **Tại sao dùng → Giá phải trả → Khi nào KHÔNG dùng → Failure mode → Cách đo kết quả**
+
+Một câu trả lời Senior không cần chọn công nghệ phức tạp nhất. Nó cần cho thấy ứng viên biết **làm rõ requirement, chọn giải pháp vừa đủ và bảo vệ quyết định bằng trade-off**.
 
 ---
 
 ## 🗓 Lộ trình ôn 4 tuần
 
-Cho background **React / React Native**, nhấn mạnh **React internals → Performance → Architecture → System Design → Debugging → Leadership**:
-
 | Tuần | Trọng tâm | Docs | Bài tập |
 |---|---|---|---|
 | **1** | React Internals + JS/TS | 01, 02, 03 | Vẽ Fiber, implement debounce/deepClone |
-| **2** | Performance + Browser | 05, 06, 11 | Lighthouse 1 trang thật, fix LCP |
-| **3** | Architecture + System Design | 04, 09, 12 | Vẽ lại 3 bài system design không nhìn doc |
-| **4** | Debugging + Behavioral + Mock | 13, 14, 15 | Mock interview 2 vòng/ngày, 5 STAR story |
+| **2** | Performance + Browser | 05, 06, 11 | Lighthouse 1 trang thật, fix bottleneck |
+| **3** | Architecture + System Design | 04, 09, 12, 19 | Thiết kế 3 bài không nhìn reference |
+| **4** | Debugging + Scenarios + Behavioral | 13, 14, 18, 21 | Mock interview + production scenarios |
 
-> Mỗi ngày: 2h đọc + 1h code + 30' kể STAR bằng miệng. Cuối tuần mock full 6 vòng.
-
-Chi tiết + checklist tự đánh giá: xem `docs/16-lo-trinh-phong-van.md`.
+> Mỗi ngày: đọc → nói thành tiếng → scenario → self-score. Không chỉ đọc tài liệu thụ động.
 
 ---
 
 ## 🤝 Đóng góp
 
-Mọi đóng góp đều được chào đón! Xem [CONTRIBUTING.md](CONTRIBUTING.md) để biết:
-
-- Cách thêm câu hỏi/đáp án
-- Format markdown chuẩn
-- PR flow
+Mọi đóng góp đều được chào đón! Xem [CONTRIBUTING.md](CONTRIBUTING.md) để biết format và PR flow.
 
 ```bash
-# Quick start
-git clone https://github.com/you/fe-interview-questions.git
-git checkout -b feat/cau-200
-# sửa docs/xx-xxx.md
-git commit -m "feat(docs): thêm câu 200 về ..."
+git clone https://github.com/tungxuan1656/fe-interview.git
+git checkout -b feat/your-change
+# sửa docs
+git commit -m "docs: improve interview training"
 git push && tạo PR
 ```
 
@@ -149,24 +158,19 @@ git push && tạo PR
 
 ## 🗺 Roadmap
 
-- [x] 01-12: Core (JS, React, Arch, Perf, Browser, Security, API, State, Testing, Next.js, System Design)
-- [x] 13: Debugging (10 tình huống)
-- [x] 14: Behavioral (13 câu STAR)
-- [x] 15: Senior Trap (12 trap)
-- [x] 16: Lộ trình 4 tuần + checklist
-- [ ] Thêm **bài tập coding** có lời giải (`exercises/`)
-- [ ] Thêm **flashcard** Anki cho 199 câu
-- [ ] Video mock interview
+- [x] 01-16: Core knowledge + interview roadmap
+- [x] 17: Senior interview framework + rubric
+- [x] 18: Production scenarios
+- [x] 19: System design interview mode
+- [x] 20: Frontend platform engineering
+- [x] 21: Behavioral story builder
+- [ ] Thêm bài tập coding có lời giải (`exercises/`)
+- [ ] Thêm flashcard Anki cho 199 câu
+- [ ] Thêm mock interview scripts
+- [ ] Thêm question bank theo Senior / Staff
 
 ---
 
 ## 📄 License
 
-MIT — dùng thoải mái cho học tập, phỏng vấn, giảng dạy. Nếu thấy hữu ích, hãy ⭐ **star repo** để ủng hộ!
-
----
-
-<p align="center">
-  <i>Cảm ơn bạn đã đọc đến đây. Chúc bạn pass Senior với offer xịn! 🚀</i><br/>
-  <b>Nếu repo giúp bạn, hãy tặng 1 ⭐ — đó là động lực lớn nhất cho maintainer.</b>
-</p>
+MIT — dùng thoải mái cho học tập, phỏng vấn, giảng dạy.
